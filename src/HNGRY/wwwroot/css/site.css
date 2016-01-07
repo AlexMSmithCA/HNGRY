@@ -44,12 +44,8 @@ textarea {
 }
 
 .feed-post {
-    border: 3px; 
-    border-style:solid; 
-    border-color:#808080; 
-    padding: 1em;
-    height:120px;
-    position: relative;
+    overflow: auto;
+    float:left;
 }
 
 .post-status {
@@ -57,6 +53,7 @@ textarea {
     padding-right: 15px;
     font-size:20px;
     background-color:green;
+    height:inherit;
 }
 .post-status-name {
 }
@@ -67,7 +64,8 @@ textarea {
 }
 
 .post-message {
-    float:left;
+    background-color:blue;
+    overflow: hidden;
 }
 .post-name {
 }
@@ -79,11 +77,11 @@ textarea {
     bottom: 0;
     margin-left:100px;
     font-style:italic;
-    color:grey;
 }
 
 .post-buttons {
     float: right;
+    background-color:yellow;
 }
 .post-confirm-button {
     margin-bottom:20px;
