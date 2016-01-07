@@ -1,21 +1,20 @@
-﻿using System;
-using Autofac;
-using Microsoft.AspNet.Builder;
-using Autofac.Extensions.DependencyInjection;
-using Microsoft.AspNet.Hosting;
-using Microsoft.Data.Entity;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using HNGRY.Models;
-using HNGRY.Services;
-using Microsoft.AspNet.Mvc;
-using Microsoft.Extensions.PlatformAbstractions;
-using Newtonsoft.Json.Serialization;
-
-namespace HNGRY
+﻿namespace HNGRY
 {
-    public class Startup
+	using System;
+	using Autofac;
+	using Microsoft.AspNet.Builder;
+	using Autofac.Extensions.DependencyInjection;
+	using Microsoft.AspNet.Hosting;
+	using Microsoft.Data.Entity;
+	using Microsoft.Extensions.Configuration;
+	using Microsoft.Extensions.DependencyInjection;
+	using Microsoft.Extensions.Logging;
+	using HNGRY.Models;
+	using HNGRY.Services;
+	using Microsoft.Extensions.PlatformAbstractions;
+	using Newtonsoft.Json.Serialization;
+
+	public class Startup
     {
 	    internal static IContainer ServiceLocator;
 
