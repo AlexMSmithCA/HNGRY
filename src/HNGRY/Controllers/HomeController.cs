@@ -1,19 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using HNGRY.Models;
-using Microsoft.AspNet.Mvc;
-
-namespace HNGRY.Controllers
+﻿namespace HNGRY.Controllers
 {
-    public class HomeController : Controller
-    {
-		public AppDbContext _appContext { get; set; }
+	using System.Threading.Tasks;
+	using HNGRY.Services;
+	using HNGRY.ViewModels;
+	using Microsoft.AspNet.Mvc;
+	using System.Collections.Generic;
+	using HNGRY.Models;
 
-	    public HomeController(AppDbContext appContext)
+	public class HomeController : Controller
+    {
+		private IAppDbRepository _appRepository { get; set; }
+
+	    public HomeController(IAppDbRepository appRepository)
 	    {
-		    this._appContext = appContext;
+		    this._appRepository = appRepository;
 	    }
 
         public IActionResult Index()
@@ -58,23 +58,13 @@ namespace HNGRY.Controllers
         }
 
 		[HttpPost]
-		public IActionResult SubmitQuestion(SubmitQuestionModel model)
+		public async Task<IActionResult> SubmitQuestion(QuestionSubmissionViewModel model)
 		{
-			this._appContext.Add(new QuestionSubmission
-			{
-				QuestionText = model.Text
-			});
-			this._appContext.SaveChanges();
+			await this._appRepository.AddQuestionSubmission(model.Text);
 
+			var myQs = this._appRepository.GetQuestionSubmissions();
 
-			return null;
-	    }
-
-	    public class SubmitQuestionModel
-	    {
-		    public string Text { get; set; }
+			return new JsonResult(new { Message = "Question submitted!" });
 		}
-
-    
 	}
 }

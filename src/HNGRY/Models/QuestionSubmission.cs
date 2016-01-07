@@ -3,7 +3,7 @@
 	using System;
     using System.ComponentModel.DataAnnotations;
 
-    public class QuestionSubmission
+	public class QuestionSubmission
     {
         [Key]
         public int Id { get; set; }

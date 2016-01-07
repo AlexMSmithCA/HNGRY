@@ -35,15 +35,13 @@ textarea {
 
 .borderexample
 {
-border-style:solid;
-border-color:#287EC7;
-} 
+	border-style:solid;
+	border-color:#287EC7;
+}
 
-<<<<<<< HEAD
-.fontstyle
-{
-    font-weight:100;
-=======
+.fontstyle {
+	font-weight: 100;
+}
 
 .feed-post {
     border: 3px; 
@@ -60,7 +58,6 @@ border-color:#287EC7;
     font-size:20px;
 }
 .post-status-name {
-    text-
 }
 .post-status-time {
 }
@@ -96,5 +93,4 @@ border-color:#287EC7;
 .post-unavailable-button {
     height:30px;
     width:120px;
->>>>>>> 3acafe77515aaf58f87cbfc5043961076452fce7
 }

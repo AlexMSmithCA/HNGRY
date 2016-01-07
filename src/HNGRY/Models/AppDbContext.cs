@@ -5,6 +5,11 @@ namespace HNGRY.Models
 {
     public class AppDbContext : DbContext
     {
+	    public AppDbContext()
+	    {
+		    //this.Database.EnsureCreated();
+	    }
+
         public DbSet<FeedEntry> FeedEntries { get; set; } 
 
 		public DbSet<QuestionSubmission> QuestionSubmissions { get; set; }

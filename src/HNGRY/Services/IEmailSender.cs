@@ -1,11 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace HNGRY.Services
+﻿namespace HNGRY.Services
 {
-    public interface IEmailSender
+	using System;
+	using System.Collections.Generic;
+	using System.Linq;
+	using System.Threading.Tasks;
+
+	public interface IEmailSender
     {
         Task SendEmailAsync(string email, string subject, string message);
     }

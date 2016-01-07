@@ -25,7 +25,7 @@
 	},
 
 	_submitQuestion = function() {
-		var questionToSubmit = $(SUBMIT_QUESTION_TEXT_CSS).text();
+		var questionToSubmit = $(SUBMIT_QUESTION_TEXT_CSS).val();
 		$.ajax({
 				method: POST,
 				url: SUBMIT_QUESTION_URL,
@@ -38,6 +38,7 @@
 				console.log("Yikes!  Something went wrong :(.  Please contact Sean Walsh for assistance.");
 			});
 	},
+	_done;
 
 	initialize();
 	renderUI();

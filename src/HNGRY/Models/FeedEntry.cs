@@ -1,14 +1,13 @@
 ﻿namespace HNGRY.Models
 {
 	using System;
-    using System.ComponentModel.DataAnnotations;
+	using System.ComponentModel.DataAnnotations;
 
-    public class FeedEntry
+	public class FeedEntry
     {
-        [Key]
-        public int Id { get; set; }
-
-        public string AuthorName { get; set; }
+		[Key]
+		public int Id { get; set; }
+		public string AuthorName { get; set; }
 
 		public string Message { get; set; }
 
