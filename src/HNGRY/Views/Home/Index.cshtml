@@ -59,15 +59,6 @@
     <h1>Responses from Dale and Bonnie</h1>
     @foreach (var answer in postedAnswers)
     {
-        <div style="border:3px; border-style:solid; border-color:#FF0000; padding: 1em;">
-            <blockquote>Original question: @answer.Question.QuestionText</blockquote>
-        <p >@*@answer.Question*@ <strong>@answer.AuthorName</strong> <em>(@answer.DateSubmitted)</em> @answer.Message</p>
-            </div>
-            <p></p>
-    }
-    <h1>Responses from Dale and Bonnie2</h1>
-    @foreach (var answer in postedAnswers)
-    {
 
             <div class="panel panel-default">
                 <div class="panel-heading">@answer.Question.QuestionText</div>
