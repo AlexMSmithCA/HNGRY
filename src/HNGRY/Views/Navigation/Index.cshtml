@@ -15,14 +15,23 @@
 	<script src="~/js/questionSubmission.js" asp-append-version="true"></script>
 }
 
-<div>
-	@await Html.PartialAsync(@"../Partials/_FoodFeed")
-</div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-1">
+        </div>
+        <div class="col-md-6">
+            @await Html.PartialAsync(@"../Partials/_FoodFeed")
+        </div>
+        <div class="col-md-4">
+            <div>
+                @await Html.PartialAsync(@"../Partials/_Calendar")
+            </div>
 
-<div>
-	@await Html.PartialAsync(@"../Partials/_Calendar")
-</div>
-
-<div>
-	@await Html.PartialAsync("../Partials/_QuestionSubmission")
+            <div>
+                @await Html.PartialAsync("../Partials/_QuestionSubmission")
+            </div>
+        </div>
+        <div class="col-md-1">
+        </div>
+    </div>
 </div>
