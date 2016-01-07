@@ -1,6 +1,7 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
     var postedAnswers = (List<PostedAnswer>)ViewData["PostedAnswers"];
+    var postedAnswers2 = (List<PostedAnswer>)ViewData["PostedAnswers2"];
 }
 
 <div>
@@ -23,7 +24,7 @@
 
 <div>
     <h1>Responses from Dale and Bonnie</h1>
-    @foreach(var answer in postedAnswers)
+    @foreach (var answer in postedAnswers)
     {
         <div style="border:3px; border-style:solid; border-color:#FF0000; padding: 1em;">
             <p style="border:3px; border-style:solid; border-color:#000000; padding: 1em;">Original Question: @answer.Question.QuestionText</p>
@@ -31,5 +32,21 @@
             </div>
             <p></p>
     }
+    <h1>Responses from Dale and Bonnie2</h1>
+    @foreach (var answer in postedAnswers)
+    {
 
+            <div class="panel panel-default">
+                <div class="panel-heading">@answer.Question.QuestionText</div>
+                <div class="panel-body">
+                    @answer.AuthorName (@answer.DateSubmitted) @answer.Message
+                </div>
+            </div>
+    }
+    <nav>
+        <ul class="pager">
+            <li><a href="#">Previous</a></li>
+            <li><a href="#">Next</a></li>
+        </ul>
+    </nav>
 </div>

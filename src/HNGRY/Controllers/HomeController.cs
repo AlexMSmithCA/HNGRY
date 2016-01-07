@@ -33,8 +33,8 @@ namespace HNGRY.Controllers
                     Question = new QuestionSubmission {QuestionText = "Why don't we have those dunking snacks?" }
                 }
             };
-                
-                //this._appContext.PostedAnswers.ToList();
+
+            //ViewData["PostedAnswers2"] = this._appContext.PostedAnswers.ToList();
             return View();
         }
 
