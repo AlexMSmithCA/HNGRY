@@ -7,11 +7,11 @@
 	using System.Collections.Generic;
 	using HNGRY.Models;
 
-	public class HomeController : Controller
+	public class NavigationController : Controller
     {
 		private IAppDbRepository _appRepository { get; set; }
 
-	    public HomeController(IAppDbRepository appRepository)
+	    public NavigationController(IAppDbRepository appRepository)
 	    {
 		    this._appRepository = appRepository;
 	    }
@@ -56,15 +56,5 @@
         {
             return View();
         }
-
-		[HttpPost]
-		public async Task<IActionResult> SubmitQuestion(QuestionSubmissionViewModel model)
-		{
-			await this._appRepository.AddQuestionSubmission(model.Text);
-
-			var myQs = this._appRepository.GetQuestionSubmissions();
-
-			return new JsonResult(new { Message = "Question submitted!" });
-		}
 	}
 }

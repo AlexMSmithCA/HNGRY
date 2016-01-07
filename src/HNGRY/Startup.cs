@@ -9,6 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using HNGRY.Models;
 using HNGRY.Services;
+using Microsoft.AspNet.Mvc;
 using Microsoft.Extensions.PlatformAbstractions;
 using Newtonsoft.Json.Serialization;
 
@@ -95,7 +96,8 @@ namespace HNGRY
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller}/{action}",
+					defaults: new { controller = "Navigation", action = "Index" });
             });
         }
 

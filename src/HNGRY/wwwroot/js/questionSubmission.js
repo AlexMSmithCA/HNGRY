@@ -3,7 +3,7 @@
 		/* SELECTORS */
 		SUBMIT_QUESTION_TEXT_CSS = ".submit-question-text",
 		SUBMIT_QUESTION_BUTTON_CSS = ".submit-question-button",
-		SUBMIT_QUESTION_URL = "/Home/SubmitQuestion",
+		SUBMIT_QUESTION_URL = "/Data/SubmitQuestion",
 
 		/* CONSTANTS */
 		CLICK = "click",
@@ -32,6 +32,7 @@
 				data: { text: questionToSubmit }
 			})
 			.done(function () {
+
 				console.log("Your question was submitted.");
 			})
 			.fail(function () {
