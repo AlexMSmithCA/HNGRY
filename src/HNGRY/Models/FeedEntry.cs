@@ -14,6 +14,11 @@
 
 		public DateTime DateSubmitted { get; set; }
 
-		public string Location { get; set; }
+        public DateTime DateConfirmed { get; set; }
+
+        public string Location { get; set; }
+
+        public string Status { get; set; }
+
     }
 }

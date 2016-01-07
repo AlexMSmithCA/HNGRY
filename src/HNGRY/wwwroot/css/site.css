@@ -39,7 +39,62 @@ border-style:solid;
 border-color:#287EC7;
 } 
 
+<<<<<<< HEAD
 .fontstyle
 {
     font-weight:100;
+=======
+
+.feed-post {
+    border: 3px; 
+    border-style:solid; 
+    border-color:#808080; 
+    padding: 1em;
+    height:120px;
+    position: relative;
+}
+
+.post-status {
+    float: left;
+    padding-right: 15px;
+    font-size:20px;
+}
+.post-status-name {
+    text-
+}
+.post-status-time {
+}
+.post-status-floor {
+
+}
+
+.post-message {
+    float:left;
+}
+.post-name {
+}
+.post-message-text {
+
+}
+.post-confirmed {
+    position: absolute;
+    bottom: 0;
+    margin-left:100px;
+    font-style:italic;
+    color:grey;
+}
+
+.post-buttons {
+    float: right;
+}
+.post-confirm-button {
+    margin-bottom:20px;
+    height:30px;
+    width:120px;
+}
+
+.post-unavailable-button {
+    height:30px;
+    width:120px;
+>>>>>>> 3acafe77515aaf58f87cbfc5043961076452fce7
 }

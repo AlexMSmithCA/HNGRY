@@ -4,20 +4,38 @@
     var postedAnswers2 = (List<PostedAnswer>)ViewData["PostedAnswers2"];
 }
 
-<div>
-	Food Feed
+
+<div class="feed-post">
+    <div class="post-status">
+        <div class="post-status-name">Available</div>
+            <div class="post-status-time">1:41 PM</div>
+        <div class="post-status-floor">10th Floor</div>
+    </div>
+    <div class="post-message">
+        <div class="post-name">Alex Smith</div>
+        <div class="post-message-text">Cheese from my visit to Hamburg in the 10th floor Kitchen. No nuts, just cheese for days.</div>
+        <div class="post-confirmed">Confirmed: 7 min ago</div>
+    </div>
+    <div class="post-buttons">
+        <button type="button" class="post-confirm-button btn btn-success">Confirmed</button> 
+        <br />
+        <button type="button" class="post-unavailable-button btn btn-danger">Ran out</button>
+    </div>
 </div>
 
+<br />
 <div>
 	Food Voting
 </div>
 
 <div>
 	Calendar
+    <!<img src="https://confluence/download/attachments/86705821/2016-01-07%2015_24_18-APT%20Food%20Calendar.png?version=1&modificationDate=1452198276297&api=v2" style="width:512px;height:512px;">>
 </div>
 
 <div>
-	<h1>Submit a Question</h1>
+	<h1>Ask a Question</h1>
+    <p>Submit any food-related questions or suggestions here. Dale and Bonnie will post responses below.</p>
 	<textarea class="submit-question-text" type="text"></textarea>
 	<button type="button" class="submit-question-button btn btn-danger">Primary</button>
 </div>
@@ -27,8 +45,8 @@
     @foreach (var answer in postedAnswers)
     {
         <div style="border:3px; border-style:solid; border-color:#FF0000; padding: 1em;">
-            <p style="border:3px; border-style:solid; border-color:#000000; padding: 1em;">Original Question: @answer.Question.QuestionText</p>
-        <p >@*@answer.Question*@ @answer.AuthorName (@answer.DateSubmitted) @answer.Message</p>
+            <blockquote>Original question: @answer.Question.QuestionText</blockquote>
+        <p >@*@answer.Question*@ <strong>@answer.AuthorName</strong> <em>(@answer.DateSubmitted)</em> @answer.Message</p>
             </div>
             <p></p>
     }
