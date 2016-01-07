@@ -32,3 +32,9 @@ textarea {
         z-index: 10 !important;
     }
 }
+
+.borderexample
+{
+border-style:solid;
+border-color:#287EC7;
+} 

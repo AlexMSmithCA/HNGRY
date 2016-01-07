@@ -1,5 +1,6 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
+    var postedAnswers = (List<PostedAnswer>)ViewData["PostedAnswers"];
 }
 
 <div>
@@ -14,8 +15,21 @@
 	Calendar
 </div>
 
-<div>
+<di>v
 	<h1>Submit a Question</h1>
 	<textarea class="submit-question-text" type="text"></textarea>
 	<button type="button" class="submit-question-button btn btn-danger">Primary</button>
+</div>
+
+<div>
+    <h1>Responses from Dale and Bonnie</h1>
+    @foreach(var answer in postedAnswers)
+    {
+        <div style="border:3px; border-style:solid; border-color:#FF0000; padding: 1em;">
+            <p style="border:3px; border-style:solid; border-color:#000000; padding: 1em;">@answer.Question.QuestionText</p>
+        <p >@*@answer.Question*@ @answer.AuthorName @answer.DateSubmitted @answer.Message</p>
+            </div>
+            <p></p>
+    }
+
 </div>

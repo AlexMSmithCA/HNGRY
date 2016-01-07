@@ -1,9 +1,9 @@
 ﻿namespace HNGRY.Models
 {
-	using System;
+    using System;
     using System.ComponentModel.DataAnnotations;
 
-    public class FeedEntry
+    public class PostedAnswer
     {
         [Key]
         public int Id { get; set; }
@@ -14,6 +14,6 @@
 
 		public DateTime DateSubmitted { get; set; }
 
-		public string Location { get; set; }
+		public QuestionSubmission Question { get; set; }
     }
 }
