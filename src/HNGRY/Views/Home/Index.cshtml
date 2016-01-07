@@ -13,10 +13,12 @@
 
 <div>
 	Calendar
+    <!<img src="https://confluence/download/attachments/86705821/2016-01-07%2015_24_18-APT%20Food%20Calendar.png?version=1&modificationDate=1452198276297&api=v2" style="width:512px;height:512px;">>
 </div>
 
 <div>
-	<h1>Submit a Question</h1>
+	<h1>Ask a Question</h1>
+    <p>Submit any food-related questions or suggestions here. Dale and Bonnie will post responses below.</p>
 	<textarea class="submit-question-text" type="text"></textarea>
 	<button type="button" class="submit-question-button btn btn-danger">Primary</button>
 </div>
@@ -26,8 +28,8 @@
     @foreach(var answer in postedAnswers)
     {
         <div style="border:3px; border-style:solid; border-color:#FF0000; padding: 1em;">
-            <p style="border:3px; border-style:solid; border-color:#000000; padding: 1em;">Original Question: @answer.Question.QuestionText</p>
-        <p >@*@answer.Question*@ @answer.AuthorName (@answer.DateSubmitted) @answer.Message</p>
+            <blockquote>Original question: @answer.Question.QuestionText</blockquote>
+        <p >@*@answer.Question*@ <strong>@answer.AuthorName</strong> <em>(@answer.DateSubmitted)</em> @answer.Message</p>
             </div>
             <p></p>
     }
