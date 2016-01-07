@@ -1,0 +1,66 @@
+﻿.feed-post {
+    display: inline-table;
+    vertical-align: middle;
+    box-sizing: border-box;
+    border:2px solid #808080;
+    border-radius:5px;
+}
+
+.post-status {
+    padding:0px 10px 0px;
+    display: table-cell;
+    box-sizing: border-box;
+    background-color: green;
+    vertical-align: middle;
+
+}
+
+.post-status-name {
+    font-size:20px;
+}
+.post-status-time {
+    font-size:15px;
+}
+.post-status-floor {
+    font-size:15px;
+
+}
+
+.post-message {
+    width: 100%;
+    height:100%;
+    display: table-cell;
+    position: relative;
+    float: left;
+    vertical-align: middle;
+    box-sizing: border-box;
+    padding:5px 10px 0px;
+}
+.post-name {
+    font-weight:bold;
+}
+.post-message-text {
+    margin-left:10px;
+}
+.post-confirmed {
+    padding-left:100px;
+    font-style:italic;
+    color:grey;
+}
+
+.post-buttons {
+    border-left: 0;
+    vertical-align: middle;
+    box-sizing: border-box;
+    display: table-cell;
+    padding: 5px 10px 5px 5px;
+}
+
+.post-confirm-button {
+    margin-bottom:10px;
+    width:100%;
+}
+
+.post-unavailable-button {
+    width:100%;
+}

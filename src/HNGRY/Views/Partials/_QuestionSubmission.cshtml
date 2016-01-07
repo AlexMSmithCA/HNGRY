@@ -2,3 +2,25 @@
 <p>Submit any food-related questions or suggestions here. Dale and Bonnie will post responses below.</p>
 <textarea class="submit-question-text" type="text"></textarea>
 <button type="button" class="submit-question-button btn btn-danger">Primary</button>
+
+@*
+<div>
+	<h1>Responses from Bonnie and Dale</h1>
+	@foreach (var answer in postedAnswers)
+	{
+
+		<div class="panel panel-default">
+			<div class="panel-heading">@answer.Question.QuestionText</div>
+			<div class="panel-body">
+				@answer.AuthorName (@answer.DateSubmitted) @answer.Message
+			</div>
+		</div>
+	}
+	<nav>
+		<ul class="pager">
+			<li><a href="#">Previous</a></li>
+			<li><a href="#">Next</a></li>
+		</ul>
+	</nav>
+</div>
+*@
