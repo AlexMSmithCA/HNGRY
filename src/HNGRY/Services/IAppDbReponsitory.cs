@@ -8,6 +8,7 @@
 	{
 		List<User> GetUsers();
 		User GetUserFromName(string username);
+		User GetUserFromUUID(string userUUID);
 
 		List<QuestionSubmission> GetQuestionSubmissions();
 	    Task AddQuestionSubmission(string question);

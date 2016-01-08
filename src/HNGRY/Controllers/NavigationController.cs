@@ -1,6 +1,4 @@
-﻿using HNGRY.Models;
-
-namespace HNGRY.Controllers
+﻿namespace HNGRY.Controllers
 {
     using HNGRY.Services;
 	using Microsoft.AspNet.Authorization;
@@ -9,6 +7,7 @@ namespace HNGRY.Controllers
 	using System.Linq;
 	using HNGRY.Attributes;
 	using System.Security.Claims;
+	using HNGRY.Models;
 
 	[Authorize]
 	[AutoLogin]
@@ -18,7 +17,6 @@ namespace HNGRY.Controllers
 
 		public NavigationController(IAppDbRepository appRepository)
 	    {
-
 		    this._appRepository = appRepository;
 	    }
 
@@ -26,34 +24,41 @@ namespace HNGRY.Controllers
         {
 	        ViewData["PostedAnswersViewModel"] = new PostedAnswersViewModel
 	        {
-		        Answers = this._appRepository.GetPostedAnswers().Select(a => new PostedAnswerViewModel
+		        Answers = this._appRepository.GetPostedAnswers()
+					.Select(a => new PostedAnswerViewModel
 						{
-                            Title=a.Title, 
-                            AuthorName = a.AuthorName,
+							Title = a.Title, 
+							AuthorName = a.AuthorName,
 							DateSubmittedDisplayString = a.DateSubmitted.ToString(),
 							Message = a.Message
 						})
+					.OrderByDescending(a => a.DateSubmittedDisplayString)
 					.ToList()
 	        };
 
-            ViewData["FeedEntriesViewModel"] = new FeedEntriesViewModel
-            {
-                FeedEntries = this._appRepository.GetFeedEntries().Select(a => new FeedEntryViewModel
-                {
-                    Id = a.Id,
-                    AuthorName = a.AuthorName,
-                    DateSubmittedDisplayString = a.DateSubmitted.ToString("hh:mm tt"),                    
-                    Message = a.Message,
-                    DateConfirmedDisplayString = a.DateConfirmed.ToString("hh:mm tt"),
-                    Location = a.Location,
-                    Status = a.Status,
-                    TimeSinceConfirm = (int)System.DateTime.Now.Subtract(a.DateConfirmed).TotalMinutes,
-                    NumberConfirms = a.NumberConfirms,
-                    TimeOrder = a.DateSubmitted.Ticks
-                }).OrderByDescending(f => f.TimeOrder)
-                .ToList()
-            };
-
+			ViewData["FeedEntriesViewModel"] = new FeedEntriesViewModel
+			{
+				FeedEntries = this._appRepository.GetFeedEntries()
+					.Select(a =>
+					{
+						var user = this._appRepository.GetUserFromUUID(a.UserUUID);
+						return new FeedEntryViewModel
+						{
+							Id = a.Id,
+							AuthorName = user.FullName,
+							DateSubmittedDisplayString = a.DateSubmitted.ToString("hh:mm tt"),
+							Message = a.Message,
+							DateConfirmedDisplayString = a.DateConfirmed.ToString("hh:mm tt"),
+							Location = a.Location,
+							Status = a.Status,
+							TimeSinceConfirm = (int) System.DateTime.Now.Subtract(a.DateConfirmed).TotalMinutes,
+							NumberConfirms = a.NumberConfirms,
+							TimeOrder = a.DateSubmitted.Ticks
+						};
+					})
+					.OrderByDescending(f => f.TimeOrder)
+					.ToList()
+			};
 
             return View();
         }
@@ -61,7 +66,7 @@ namespace HNGRY.Controllers
 		[AllowAnonymous]
 		public IActionResult About()
         {
-            ViewData["Message"] = $"Your application description page. -- {User.Identity.Name} SignedIn{User.IsSignedIn()} UserId{User.GetUserId()} Auth{User.Identity.IsAuthenticated}";
+            ViewData["Message"] = $"Your application description page.";
 
             return View();
         }

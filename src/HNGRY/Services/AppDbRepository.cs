@@ -30,7 +30,7 @@
 		    return this.GetUsers().SingleOrDefault(u => u.UserName == username);
 	    }
 
-	    private User GetUserFromUUID(string userUUID)
+	    public User GetUserFromUUID(string userUUID)
 	    {
 		    return this.GetUsers().SingleOrDefault(u => u.Id == userUUID);
 	    }
@@ -145,47 +145,46 @@
         {
 	        var user = this.GetUserFromUUID(userUUID);
 
-	        var smtp = new SmtpClient
-	        {
-		        Host = "smtp.gmail.com",
-		        Port = 587,
-		        EnableSsl = true,
-		        DeliveryMethod = SmtpDeliveryMethod.Network,
-		        UseDefaultCredentials = false,
-		        Credentials = new NetworkCredential("hngrymn@gmail.com", "APT12345")
-	        };
+	   //     var smtp = new SmtpClient
+	   //     {
+		  //      Host = "smtp.gmail.com",
+		  //      Port = 587,
+		  //      EnableSsl = true,
+		  //      DeliveryMethod = SmtpDeliveryMethod.Network,
+		  //      UseDefaultCredentials = false,
+		  //      Credentials = new NetworkCredential("hngrymn@gmail.com", "APT12345")
+	   //     };
 
-	        foreach (var sub in GetSubscriptions())
-            {
-                if (sub.EmailAlert && sub.FoodSubmissions)
-                {
-                    System.Net.Mail.MailMessage mail = new System.Net.Mail.MailMessage("hngrymn@gmail.com", user.Email, "Food at APT (" + location + ")", message);
-                    smtp.Send(mail);
-                }
-                if (sub.TextAlert && sub.FoodSubmissions)
-                {
-                    System.Net.Mail.MailMessage text = new System.Net.Mail.MailMessage("hngrymn@gmail.com", user.PhoneNumber +"@vtext.com", "Food at APT (" + location + ")", message);
-                    smtp.Send(text);
-                    //System.Net.Mail.MailMessage text2 = new System.Net.Mail.MailMessage("hngrymn@gmail.com", sub.Phone + "@@txt.att.net", "Food at APT (" + locationA + ")", messageA);
-                    //smtp.Send(text2);                    
-                }
-                //System.Net.Mail.MailMessage mail1 = new System.Net.Mail.MailMessage("hngrymn@gmail.com", sub.Email, "Food at APT (" + locationA + ")", messageA);
-                //smtp.Send(mail1);
-                //System.Net.Mail.MailMessage text1 = new System.Net.Mail.MailMessage("hngrymn@gmail.com", sub.Phone.ToString() + "@vtext.com", "Food at APT (" + locationA + ")", messageA);
-                //smtp.Send(text1);
-            }
+	   //     foreach (var sub in GetSubscriptions())
+    //        {
+    //            if (sub.EmailAlert && sub.FoodSubmissions && !string.IsNullOrEmpty(user.Email))
+    //            {
+    //                System.Net.Mail.MailMessage mail = new System.Net.Mail.MailMessage("hngrymn@gmail.com", user.Email, "Food at APT (" + location + ")", message);
+    //                smtp.Send(mail);
+    //            }
+    //            if (sub.TextAlert && sub.FoodSubmissions && !string.IsNullOrEmpty(user.PhoneNumber))
+				//{
+    //                System.Net.Mail.MailMessage text = new System.Net.Mail.MailMessage("hngrymn@gmail.com", user.PhoneNumber +"@vtext.com", "Food at APT (" + location + ")", message);
+    //                smtp.Send(text);
+    //                //System.Net.Mail.MailMessage text2 = new System.Net.Mail.MailMessage("hngrymn@gmail.com", sub.Phone + "@@txt.att.net", "Food at APT (" + locationA + ")", messageA);
+    //                //smtp.Send(text2);                    
+    //            }
+    //            //System.Net.Mail.MailMessage mail1 = new System.Net.Mail.MailMessage("hngrymn@gmail.com", sub.Email, "Food at APT (" + locationA + ")", messageA);
+    //            //smtp.Send(mail1);
+    //            //System.Net.Mail.MailMessage text1 = new System.Net.Mail.MailMessage("hngrymn@gmail.com", sub.Phone.ToString() + "@vtext.com", "Food at APT (" + locationA + ")", messageA);
+    //            //smtp.Send(text1);
+    //        }
 
 
             this._appContext.Add(new FeedEntry
             {
+				UserUUID = userUUID,
                 Location = location,
                 Message = message,
                 DateSubmitted = DateTime.Now,
                 DateConfirmed = DateTime.Now,
                 Status = true,
-                AuthorName = "Sean",
                 NumberConfirms = 1
-
             });
             await this._appContext.SaveChangesAsync();
 
