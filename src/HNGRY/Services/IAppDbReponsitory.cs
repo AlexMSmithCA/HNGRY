@@ -12,6 +12,7 @@
 		List<PostedAnswer> GetPostedAnswers();
 		Task AddPostedAnswer(string authorName, string message);
 
+        List<FeedEntry> GetFeedEntries();
         Task AddFoodSubmission(string locationA, string messageA);
         Task AddSubscriber(int phone, int foodSubmissions, string email, int postsFrom, int emailAlert, int textAlert);
     }

@@ -23,7 +23,7 @@
         <div class="col-md-1">
         </div>
         <div class="col-md-6">
-            @await Html.PartialAsync(@"../Partials/_FoodFeed")
+            @await Html.PartialAsync(@"../Partials/_FoodFeed", (FeedEntriesViewModel)this.ViewData["FeedEntriesViewModel"]);
         </div>
         <div class="col-md-4">
             <div>

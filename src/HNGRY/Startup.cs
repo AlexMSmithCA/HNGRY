@@ -55,8 +55,9 @@ namespace HNGRY
 			// Data seeding services
 	        services.AddTransient<SeedPostedAnswers>();
 	        services.AddTransient<SampleDataSeeder>();
+            services.AddTransient<SeedFeedEntries>();
 
-	        var builder = new ContainerBuilder();
+            var builder = new ContainerBuilder();
 	        builder.Populate(services);
 
 	        Startup.ServiceLocator = builder.Build();

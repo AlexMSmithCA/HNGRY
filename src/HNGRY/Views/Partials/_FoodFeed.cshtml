@@ -1,4 +1,9 @@
-﻿<div class="feed-submission">
+﻿@using HNGRY.ViewModels
+@{
+    var _model = (FeedEntriesViewModel)this.Model;
+}
+
+<div class="feed-submission">
     <form class="form-inline" role="form">
         <div class="form-group">
             <label for="sel1">Location: </label>
@@ -18,24 +23,24 @@
 </div>
 
 <div class="feed-post">
-	<div class="post-status post-status-available">
-		<div class="post-status-name">Available</div>
-		<div class="post-status-time">1:41 PM</div>
-		<div class="post-status-floor">10th Floor</div>
-	</div>
-	<div class="post-message">
-		<div class="post-name">Alex Smith</div>
-		<div class="post-message-text">
-			Cheese from my visit to Hamburg in the 10th floor Kitchen. No nuts, just cheese for days.
-		</div>
-		<div class="post-confirmed">Confirmed: 7 min ago</div>
-	</div>
-	<div class="post-buttons">
+    <div class="post-status post-status-available">
+        <div class="post-status-name">Available</div>
+        <div class="post-status-time">1:41 PM</div>
+        <div class="post-status-floor">10th Floor</div>
+    </div>
+    <div class="post-message">
+        <div class="post-name">Alex Smith</div>
+        <div class="post-message-text">
+            Cheese from my visit to Hamburg in the 10th floor Kitchen. No nuts, just cheese for days.
+        </div>
+        <div class="post-confirmed">Confirmed: 7 min ago</div>
+    </div>
+    <div class="post-buttons">
         <button type="button" class="post-undelete-button btn btn-danger" style="display:none">Available again</button>
-		<button type="button" class="post-confirm-button btn btn-success">Still available</button>
-		<br />
-		<button type="button" class="post-unavailable-button btn btn-danger">Ran out</button>
-	</div>
+        <button type="button" class="post-confirm-button btn btn-success">Still available</button>
+        <br />
+        <button type="button" class="post-unavailable-button btn btn-danger">Ran out</button>
+    </div>
 </div>
 
 <div class="feed-post-inactive">
@@ -53,8 +58,60 @@
     </div>
     <div class="post-buttons ">
         <button type="button" class="post-undelete-button btn btn-danger">Available again</button>
-        <button type="button" class="post-confirm-button btn btn-success"style="display:none">Still available</button>
+        <button type="button" class="post-confirm-button btn btn-success" style="display:none">Still available</button>
         <br />
-        <button type="button" class="post-unavailable-button btn btn-danger"style="display:none">Ran out</button>
+        <button type="button" class="post-unavailable-button btn btn-danger" style="display:none">Ran out</button>
     </div>
 </div>
+
+
+@*@FeedEntry.AuthorName (@answer.DateSubmittedDisplayString)*@
+@foreach (var FeedEntry in _model.FeedEntries)
+{
+    @if (FeedEntry.Status == true)
+    {
+        <div class="feed-post">
+            <div class="post-status post-status-available">
+                <div class="post-status-name">Available</div>
+                <div class="post-status-time">@FeedEntry.DateSubmittedDisplayString</div>
+                <div class="post-status-floor">@FeedEntry.Location</div>
+            </div>
+            <div class="post-message">
+                <div class="post-name">@FeedEntry.AuthorName</div>
+                <div class="post-message-text">
+                    @FeedEntry.Message
+                </div>
+                <div class="post-confirmed">Confirmed: @FeedEntry.TimeSinceConfirm minutes ago</div>
+            </div>
+            <div class="post-buttons">
+                <button type="button" class="post-undelete-button btn btn-danger" style="display:none">Available again</button>
+                <button type="button" class="post-confirm-button btn btn-success">Still available</button>
+                <br />
+                <button type="button" class="post-unavailable-button btn btn-danger">Ran out</button>
+            </div>
+        </div>
+    }
+    @if (FeedEntry.Status == false)
+    {
+        <div class="feed-post-inactive">
+            <div class="post-status post-status-unavailable">
+                <div class="post-status-name">Unavailable</div>
+                <div class="post-status-time">@FeedEntry.DateSubmittedDisplayString</div>
+                <div class="post-status-floor">@FeedEntry.Location</div>
+            </div>
+            <div class="post-message post-message-unavailable">
+                <div class="post-name">@FeedEntry.AuthorName</div>
+                <div class="post-message-text">
+                    @FeedEntry.Message
+                </div>
+                <div class="post-confirmed">Ran out: @FeedEntry.TimeSinceConfirm minutes ago</div>
+            </div>
+            <div class="post-buttons ">
+                <button type="button" class="post-undelete-button btn btn-danger">Available again</button>
+                <button type="button" class="post-confirm-button btn btn-success" style="display:none">Still available</button>
+                <br />
+                <button type="button" class="post-unavailable-button btn btn-danger" style="display:none">Ran out</button>
+            </div>
+        </div>
+    }
+}

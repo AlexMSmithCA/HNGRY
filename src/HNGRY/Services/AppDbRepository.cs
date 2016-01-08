@@ -45,12 +45,23 @@
 			await this._appContext.SaveChangesAsync();
 		}
 
-	    public async Task AddFoodSubmission(string locationA, string messageA)
+        public List<FeedEntry> GetFeedEntries()
+        {
+            return this._appContext.FeedEntries.ToList();
+        }
+
+        public async Task AddFoodSubmission(string locationA, string messageA)
         {
             this._appContext.Add(new FeedEntry
             {
                 Location = locationA,
-                Message = messageA
+                Message = messageA,
+                DateSubmitted = DateTime.Now,
+                DateConfirmed = DateTime.Now,
+                Status = false,
+                AuthorName = "Sean",
+                NumberConfirms = 1
+
             });
             await this._appContext.SaveChangesAsync();
         }
@@ -68,5 +79,6 @@
             });
             await this._appContext.SaveChangesAsync();
         }
+
     }
 }

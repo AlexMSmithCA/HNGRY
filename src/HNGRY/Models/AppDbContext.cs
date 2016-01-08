@@ -16,5 +16,7 @@
         public DbSet<PostedAnswer> PostedAnswers { get; set; }
 
         public DbSet<Subscription> Subscriptions { get; set; }
+
+        public DbSet<PostedAnswer> PostedFeedEntries { get; set; }
     }
 }

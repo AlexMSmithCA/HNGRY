@@ -1,12 +1,13 @@
 ﻿namespace HNGRY.Models
 {
-	using System;
+    using System;
     using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
 
-	public class Subscription
+    public class Subscription
     {
-        [Key]
-        public string AccountID { get; set; }
+        [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int AccountID { get; set; }
 
         public string Email { get; set; }
 
