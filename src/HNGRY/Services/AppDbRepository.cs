@@ -25,7 +25,17 @@
 
 	    public async Task AddQuestionSubmission(string question)
 	    {
-		    this._appContext.Add(new QuestionSubmission
+            SmtpClient smtp = new SmtpClient();
+            smtp.Host = "smtp.gmail.com";
+            smtp.Port = 587;
+            smtp.EnableSsl = true;
+            smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
+            smtp.UseDefaultCredentials = false;
+            smtp.Credentials = new NetworkCredential("hngrymn@gmail.com", "APT12345");
+            System.Net.Mail.MailMessage mail = new System.Net.Mail.MailMessage("hngrymn@gmail.com","BStankey@predictiveTechnologies.com","New HNGRY Question", question);
+            smtp.Send(mail);
+
+            this._appContext.Add(new QuestionSubmission
 		    {
 				QuestionText = question
 		    });
@@ -39,7 +49,37 @@
 
 	    public async Task AddPostedAnswer(string title, string authorName, string message)
 	    {
-			this._appContext.Add(new PostedAnswer
+
+            SmtpClient smtp = new SmtpClient();
+            smtp.Host = "smtp.gmail.com";
+            smtp.Port = 587;
+            smtp.EnableSsl = true;
+            smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
+            smtp.UseDefaultCredentials = false;
+            smtp.Credentials = new NetworkCredential("hngrymn@gmail.com", "APT12345");
+
+            foreach (Subscription sub in GetSubscriptions())
+            {
+                if (sub.EmailAlert == 1 && sub.PostsFrom == 1)
+                {
+                    System.Net.Mail.MailMessage mail = new System.Net.Mail.MailMessage("hngrymn@gmail.com", sub.Email, "New Post from " + authorName + " about " + title, message);
+                    smtp.Send(mail);
+                }
+                if (sub.TextAlert == 1 && sub.PostsFrom == 1)
+                {
+                    System.Net.Mail.MailMessage text = new System.Net.Mail.MailMessage("hngrymn@gmail.com", sub.Phone, "New Post from " + authorName + " about " + title, message);
+                    smtp.Send(text);
+                    //System.Net.Mail.MailMessage text2 = new System.Net.Mail.MailMessage("hngrymn@gmail.com", sub.Phone + "@@txt.att.net", "Food at APT (" + locationA + ")", messageA);
+                    //smtp.Send(text2);                    
+                }
+                //System.Net.Mail.MailMessage mail1 = new System.Net.Mail.MailMessage("hngrymn@gmail.com", sub.Email, "Food at APT (" + locationA + ")", messageA);
+                //smtp.Send(mail1);
+                //System.Net.Mail.MailMessage text1 = new System.Net.Mail.MailMessage("hngrymn@gmail.com", sub.Phone.ToString() + "@vtext.com", "Food at APT (" + locationA + ")", messageA);
+                //smtp.Send(text1);
+            }
+
+
+            this._appContext.Add(new PostedAnswer
 			{
                 Title = title,
                 AuthorName = authorName,

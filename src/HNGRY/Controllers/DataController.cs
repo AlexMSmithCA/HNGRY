@@ -17,9 +17,9 @@
 		[HttpPost]
 		public async Task<IActionResult> SubmitQuestion(QuestionSubmissionAjaxViewModel model)
 		{
-			await this._appRepository.AddQuestionSubmission(model.Text);
+			await this._appRepository.AddQuestionSubmission(model.Question);
 
-			var myQs = this._appRepository.GetQuestionSubmissions();
+			//var myQs = this._appRepository.GetQuestionSubmissions();
 
 			return new JsonResult(new { Message = "Question submitted!" });
 		}

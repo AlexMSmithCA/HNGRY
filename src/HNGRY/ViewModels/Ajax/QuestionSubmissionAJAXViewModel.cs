@@ -2,6 +2,6 @@
 {
     public class QuestionSubmissionAjaxViewModel
     {
-		public string Text { get; set; }
+		public string Question { get; set; }
 	}
 }
