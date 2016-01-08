@@ -11,7 +11,7 @@
     using OpenPop.Pop3;
     using OpenPop.Mime;
     using System.Collections;
-    using System.Text.RegularExpressions
+    using System.Text.RegularExpressions;
 
 
     public class AppDbRepository : IAppDbRepository
