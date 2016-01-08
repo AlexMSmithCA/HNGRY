@@ -8,6 +8,11 @@
     using System.Text;
     using System.Net.Mail;
     using System.Net;
+    using OpenPop.Pop3;
+    using OpenPop.Mime;
+    using System.Collections;
+    using System.Text.RegularExpressions
+
 
     public class AppDbRepository : IAppDbRepository
     {
@@ -188,6 +193,77 @@
 		{
 			return this._appContext.Subscriptions.ToList();
 		}
-		#endregion
-	}
+        #endregion
+
+        #region Read Email
+        private void Read_Emails()
+        {
+
+            Pop3Client pop3Client = new Pop3Client();
+            pop3Client.Connect("pop.gmail.com", 995, true);
+            pop3Client.Authenticate("hngrymn@gmail.com", "APT12345", AuthenticationMethod.UsernameAndPassword);                          
+
+            int count = pop3Client.GetMessageCount();
+            List < Email > Emails = new List<Email>();
+            for (int i = count; i >= 1; i--)
+            {
+                Message message = pop3Client.GetMessage(i);
+                Email email = new Email()
+                {
+                    MessageNumber = i,
+                    Subject = message.Headers.Subject,
+                    DateSent = message.Headers.DateSent,
+                    From = string.Format("<a href = 'mailto:{1}'>{0}</a>", message.Headers.From.DisplayName, message.Headers.From.Address),
+                };
+                MessagePart body = message.FindFirstHtmlVersion();
+                Regex digitsOnly = new Regex(@"[^\d]");
+                if (body != null)
+                {                
+                    email.Body = body.GetBodyAsText();
+                    if (email.Body.Contains("over"))
+                    {
+                        int feedEntryNumber = Int32.Parse(digitsOnly.Replace(email.Body, ""));
+                        if (this._appContext.FeedEntries.Any(s => s.Id == feedEntryNumber))
+                        {
+                            var feedEntry = this._appContext.FeedEntries.Single(s => s.Id == feedEntryNumber);
+                            feedEntry.Status= false;                            
+                        }
+                    }
+                }
+                else
+                {
+                    body = message.FindFirstPlainTextVersion();
+                    if (body != null)
+                    {
+                        email.Body = body.GetBodyAsText();
+                        if (email.Body.Contains("over"))
+                        {
+                            int feedEntryNumber = Int32.Parse(digitsOnly.Replace(email.Body, ""));
+                            if (this._appContext.FeedEntries.Any(s => s.Id == feedEntryNumber))
+                            {
+                                var feedEntry = this._appContext.FeedEntries.Single(s => s.Id == feedEntryNumber);
+                                feedEntry.Status = false;
+                            }
+                        }
+                    }
+
+                }
+                //List<MessagePart> attachments = message.FindAllAttachments();
+
+                //foreach (MessagePart attachment in attachments)
+                //{
+                //    email.Attachments.Add(new Attachment
+                //    {
+                //        FileName = attachment.FileName,
+                //        ContentType = attachment.ContentType.MediaType,
+                //        Content = attachment.Body
+                //    });
+                //}
+                //this.Emails.Add(email);
+            }
+        }
+
+
+        #endregion
+    }
 }

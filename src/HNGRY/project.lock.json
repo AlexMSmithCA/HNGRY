@@ -1871,6 +1871,15 @@
           "lib/net45/Newtonsoft.Json.dll": {}
         }
       },
+      "OpenPop.NET/2.0.6.1120": {
+        "type": "package",
+        "compile": {
+          "lib/net40/OpenPop.dll": {}
+        },
+        "runtime": {
+          "lib/net40/OpenPop.dll": {}
+        }
+      },
       "Remotion.Linq/2.0.1": {
         "type": "package",
         "compile": {
@@ -3962,6 +3971,15 @@
         },
         "runtime": {
           "lib/net45/Newtonsoft.Json.dll": {}
+        }
+      },
+      "OpenPop.NET/2.0.6.1120": {
+        "type": "package",
+        "compile": {
+          "lib/net40/OpenPop.dll": {}
+        },
+        "runtime": {
+          "lib/net40/OpenPop.dll": {}
         }
       },
       "Remotion.Linq/2.0.1": {
@@ -6057,6 +6075,15 @@
           "lib/net45/Newtonsoft.Json.dll": {}
         }
       },
+      "OpenPop.NET/2.0.6.1120": {
+        "type": "package",
+        "compile": {
+          "lib/net40/OpenPop.dll": {}
+        },
+        "runtime": {
+          "lib/net40/OpenPop.dll": {}
+        }
+      },
       "Remotion.Linq/2.0.1": {
         "type": "package",
         "compile": {
@@ -7762,6 +7789,17 @@
         "tools/install.ps1"
       ]
     },
+    "OpenPop.NET/2.0.6.1120": {
+      "type": "package",
+      "sha512": "NKgNRQAMJOTSnefCt3yfoQ8fPYml46Mwzq6m9OPwzmtKbXLXptUKaMnUjOoISpSowv8EclRVuv6DJXtZPJfcKQ==",
+      "files": [
+        "lib/net20/OpenPop.dll",
+        "lib/net40/OpenPop.dll",
+        "OpenPop.NET.2.0.6.1120.nupkg",
+        "OpenPop.NET.2.0.6.1120.nupkg.sha512",
+        "OpenPop.NET.nuspec"
+      ]
+    },
     "Remotion.Linq/2.0.1": {
       "type": "package",
       "sha512": "SIO6HDH6CU9GC2IZGBrc6q5X5vRhfatXrg9cVavCEG9W6v5e88b+vXjmLGQEorch4sYEIImRr+ODyUMyrmrqAg==",
@@ -8188,7 +8226,7 @@
     "System.Reflection.Metadata/1.1.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "RLIE4sSt2zngMLuqM6YmxBH99mTumtT4DNZE4+msfEaInUP5iCLQT+BHPl+2cjSAP1pdALyAjLB8RtCB+WGGWQ==",
+      "sha512": "a8VsRm/B0Ik1o5FumSMWmpwbG7cvIIajAYhzTTy9VB9XItByJDQHGZkQTIAdsvVJ6MI5O3uH/lb0izgQDlDIWA==",
       "files": [
         "lib/dotnet5.2/System.Reflection.Metadata.dll",
         "lib/dotnet5.2/System.Reflection.Metadata.xml",
@@ -8575,7 +8613,8 @@
       "Microsoft.Extensions.Logging.Debug >= 1.0.0-rc1-final",
       "Microsoft.VisualStudio.Web.BrowserLink.Loader >= 14.0.0-rc1-final",
       "Autofac >= 4.0.0-rc1-177",
-      "Autofac.Extensions.DependencyInjection >= 4.0.0-rc1-177"
+      "Autofac.Extensions.DependencyInjection >= 4.0.0-rc1-177",
+      "OpenPop.NET >= 2.0.6.1120"
     ],
     "DNX,Version=v4.5.1": [
       "fx/System.Net >= 4.0.0"
