@@ -39,5 +39,13 @@
 
             return new JsonResult(new { Message = "Subscription Updated" });
         }
+        [HttpPost]
+        public async Task<IActionResult> UpdateFeedEntry(UpdateFeedEntryAjaxViewModel model)
+        {
+            await this._appRepository.UpdateFeedEntry(model.Id, model.ChangeType);
+
+            return new JsonResult(new { Message = "Feed Entry Updated" });
+        }
+
     }
 }

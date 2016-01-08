@@ -33,6 +33,7 @@
             {
                 FeedEntries = this._appRepository.GetFeedEntries().Select(a => new FeedEntryViewModel
                 {
+                    Id = a.Id,
                     AuthorName = a.AuthorName,
                     DateSubmittedDisplayString = a.DateSubmitted.ToString("hh:mm tt"),                    
                     Message = a.Message,

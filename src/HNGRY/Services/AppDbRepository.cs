@@ -80,5 +80,24 @@
             await this._appContext.SaveChangesAsync();
         }
 
+        public async Task UpdateFeedEntry(int id, UpdateFeedEntryChangeType changeType)
+        {
+            var entry = this.GetFeedEntries().Where(f => f.Id == id).Single();
+            if(changeType== UpdateFeedEntryChangeType.Revive)
+            {
+                entry.Status = true;
+                entry.DateConfirmed = DateTime.Now;
+            }
+            else if (changeType== UpdateFeedEntryChangeType.Confirm)
+            {
+                entry.NumberConfirms = entry.NumberConfirms + 1;
+                entry.DateConfirmed = DateTime.Now;
+            }
+            else if (changeType == UpdateFeedEntryChangeType.Runout)
+            {
+                entry.Status = false;
+            }
+            await this._appContext.SaveChangesAsync();
+        }
     }
 }

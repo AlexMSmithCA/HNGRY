@@ -24,7 +24,7 @@
         <div class="col-md-1">
         </div>
         <div class="col-md-6">
-            @await Html.PartialAsync(@"../Partials/_FoodFeed", (FeedEntriesViewModel)this.ViewData["FeedEntriesViewModel"]);
+            @await Html.PartialAsync(@"../Partials/_FoodFeed", (FeedEntriesViewModel)this.ViewData["FeedEntriesViewModel"])
         </div>
         <div class="col-md-4">
             <div>
@@ -36,7 +36,7 @@
 	        </div>
 
 			<div>
-				@await Html.PartialAsync("../Partials/_QuestionAnswers", (PostedAnswersViewModel)this.ViewData["PostedAnswersViewModel"]);
+				@await Html.PartialAsync("../Partials/_QuestionAnswers", (PostedAnswersViewModel)this.ViewData["PostedAnswersViewModel"])
 			</div>
         </div>
         <div class="col-md-1">
