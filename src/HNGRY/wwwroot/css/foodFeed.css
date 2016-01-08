@@ -15,10 +15,11 @@
 }
 
 .feed-post {
+    position:relative;
     display: inline-table;
     vertical-align: middle;
     box-sizing: border-box;
-    border:2px solid #808080;
+    border:1px solid #808080;
     border-radius:5px;
     margin-bottom:10px;
     width:100%;
@@ -38,7 +39,7 @@
 }
 
     .post-status-available {
-        background-color:#5D95BF;
+        background-color:#008cba;
     }
     .post-status-unavailable {
         background-color:#808080;
@@ -57,13 +58,11 @@
 
 .post-message {
     width: 100%;
-    height:100%;
     display: table-cell;
-    position: relative;
     float: left;
     vertical-align: middle;
     box-sizing: border-box;
-    padding:5px 10px 0px;
+    padding:5px 10px 25px;
 }
 .post-message-unavailable {
     color:grey;
@@ -74,10 +73,15 @@
 .post-message-text {
     margin-left:10px;
 }
+
 .post-confirmed {
-    padding-left:100px;
+    position:absolute;
+    bottom:0px;
+    left:0px;
     font-style:italic;
     color:grey;
+    margin-left:145px;
+    padding:5px 0px 0px 5px;
 }
 
 .post-buttons {
@@ -86,7 +90,7 @@
     box-sizing: border-box;
     display: table-cell;
     padding: 5px 10px 5px 5px;
-    width:140px;
+    width:150px;
 }
 .post-confirm-button {
     margin-bottom:10px;
@@ -104,7 +108,7 @@
     width:100%;
     margin-bottom:20px;
     height:35px;
-    color:white;
+
 }
 
 .feed-submission {

@@ -42,10 +42,20 @@
 					.Select(a =>
 					{
 						var user = this._appRepository.GetUserFromUUID(a.UserUUID);
+                        var userName = "";
+                        if (user.FullName == null)
+                        {
+                            userName = user.NormalizedUserName.Remove(0, 4);
+                        }
+                        else
+                        {
+                            userName = user.FullName;
+                        }
+                         
 						return new FeedEntryViewModel
 						{
 							Id = a.Id,
-							AuthorName = user.FullName,
+							AuthorName = userName,
 							DateSubmittedDisplayString = a.DateSubmitted.ToString("hh:mm tt"),
 							Message = a.Message,
 							DateConfirmedDisplayString = a.DateConfirmed.ToString("hh:mm tt"),

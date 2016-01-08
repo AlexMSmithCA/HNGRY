@@ -20,7 +20,7 @@
 			{
 				await this._appRepository.AddFoodSubmission(users[0].Id, "10th Floor", "Clam chowder");
 				await this._appRepository.AddFoodSubmission(users[1].Id, "11th Floor", "Tomato paste");
-				await this._appRepository.AddFoodSubmission(users[0].Id, "91th Floor", "Chopped Panda");
+				await this._appRepository.AddFoodSubmission(users[0].Id, "9th Floor", "Chopped Panda");
 			}
 		}
 	}

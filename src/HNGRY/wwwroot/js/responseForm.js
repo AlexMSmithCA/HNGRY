@@ -37,6 +37,9 @@
              .done(function () {
                  console.log("Success");
                  $(RESPONSE_SUCCESS_CSS).show();
+                 $(RESPONSE_TITLE_CSS).val("");
+                 $(RESPONSE_AUTHOR_CSS).val("");
+                 $(RESPONSE_MESSAGE_CSS).val("");
              })
              .fail(function () {
                  console.log("Failure");
