@@ -55,26 +55,35 @@
 
         public async Task AddFoodSubmission(string locationA, string messageA)
         {
-            System.Net.Mail.MailMessage mail = new System.Net.Mail.MailMessage("hngrymn@gmail.com","bstankey@predictiveTechnologies.com","Food at APT (" + locationA + ")",messageA);
-            System.Net.Mail.MailMessage text = new System.Net.Mail.MailMessage("hngrymn@gmail.com", "7039197109@vtext.com", "Food at APT (" + locationA + ")", messageA);            
             SmtpClient smtp = new SmtpClient();
             smtp.Host = "smtp.gmail.com";
             smtp.Port = 587;
             smtp.EnableSsl = true;
-            smtp.DeliveryMethod = SmtpDeliveryMethod.Network; // [2] Added this
-            smtp.UseDefaultCredentials = false; // [3] Changed this
-            smtp.Credentials = new NetworkCredential("hngrymn@gmail.com", "APT12345");  // [4] Added this. Note, first parameter is NOT string.
+            smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
+            smtp.UseDefaultCredentials = false;
+            smtp.Credentials = new NetworkCredential("hngrymn@gmail.com", "APT12345");
 
-            //recipient address
-            //mail.To.Add(new MailAddress("bstankey@att.net"));
+            foreach (Subscription sub in GetSubscriptions())
+            {
+                if (sub.EmailAlert == 1 && sub.FoodSubmissions == 1)
+                {
+                    System.Net.Mail.MailMessage mail = new System.Net.Mail.MailMessage("hngrymn@gmail.com", sub.Email, "Food at APT (" + locationA + ")", messageA);
+                    smtp.Send(mail);
+                }
+                if (sub.TextAlert == 1 && sub.FoodSubmissions == 1)
+                {
+                    System.Net.Mail.MailMessage text = new System.Net.Mail.MailMessage("hngrymn@gmail.com", sub.Phone +"@vtext.com", "Food at APT (" + locationA + ")", messageA);
+                    smtp.Send(text);
+                    //System.Net.Mail.MailMessage text2 = new System.Net.Mail.MailMessage("hngrymn@gmail.com", sub.Phone + "@@txt.att.net", "Food at APT (" + locationA + ")", messageA);
+                    //smtp.Send(text2);                    
+                }
+                //System.Net.Mail.MailMessage mail1 = new System.Net.Mail.MailMessage("hngrymn@gmail.com", sub.Email, "Food at APT (" + locationA + ")", messageA);
+                //smtp.Send(mail1);
+                //System.Net.Mail.MailMessage text1 = new System.Net.Mail.MailMessage("hngrymn@gmail.com", sub.Phone.ToString() + "@vtext.com", "Food at APT (" + locationA + ")", messageA);
+                //smtp.Send(text1);
+            }
 
-            //Formatted mail body
-            //mail.IsBodyHtml = true;
-            //string st = "Test";
 
-            //mail.Body = st;
-            smtp.Send(mail);
-            smtp.Send(text);
             this._appContext.Add(new FeedEntry
             {
                 Location = locationA,
@@ -90,7 +99,7 @@
 
         }
 
-        public async Task AddSubscriber(int phone, int foodSubmissions, string email, int postsFrom, int emailAlert, int textAlert)
+        public async Task AddSubscriber(string phone, int foodSubmissions, string email, int postsFrom, int emailAlert, int textAlert)
         {
             this._appContext.Add(new Subscription
             {
@@ -122,6 +131,11 @@
                 entry.Status = false;
             }
             await this._appContext.SaveChangesAsync();
+        }
+
+        public List<Subscription> GetSubscriptions()
+        {
+            return this._appContext.Subscriptions.ToList();
         }
     }
 }

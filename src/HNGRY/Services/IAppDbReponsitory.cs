@@ -17,7 +17,7 @@
 
         Task AddFoodSubmission(string locationA, string messageA);
 
-        Task AddSubscriber(int phone, int foodSubmissions, string email, int postsFrom, int emailAlert, int textAlert);
+        Task AddSubscriber(string phone, int foodSubmissions, string email, int postsFrom, int emailAlert, int textAlert);
 
 
     }
