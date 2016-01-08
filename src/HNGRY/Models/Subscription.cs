@@ -7,6 +7,7 @@
     public class Subscription
     {
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+
         public int AccountID { get; set; }
 
         public string Email { get; set; }
