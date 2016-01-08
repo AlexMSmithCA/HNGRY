@@ -38,3 +38,7 @@ textarea {
 	border-style:solid;
 	border-color:#287EC7;
 }
+
+.body-wrapper {
+    padding-top:20px;
+}

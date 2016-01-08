@@ -1,22 +1,24 @@
-﻿<form class="form-inline" role="form">
-	<div class="form-group">
-		<label for="location1">Location: </label>
-		<select class="submit-food-location" id="location1">
-			<option>9</option>
-			<option>10</option>
-			<option>11</option>
-			<option>Other</option>
-		</select>
-	</div>
-	<div class="form-group">
-		<label for="msg">Message: </label>
-		<input type="text" class="submit-food-message" id="msg">
-	</div>
-	<button type="submit" class="submit-food-button btn btn-primary">Report food</button>
-</form>
+﻿<div class="feed-submission">
+    <form class="form-inline" role="form">
+        <div class="form-group">
+            <label for="sel1">Location: </label>
+            <select class="form-control" id="sel1">
+                <option>9</option>
+                <option>10</option>
+                <option>11</option>
+                <option>Other</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="pwd">Message: </label>
+            <input type="text" class="form-control food-submit-message" id="pwd">
+        </div>
+        <button type="submit" class="report-food btn btn-primary">Report food</button>
+    </form>
+</div>
 
 <div class="feed-post">
-	<div class="post-status">
+	<div class="post-status post-status-available">
 		<div class="post-status-name">Available</div>
 		<div class="post-status-time">1:41 PM</div>
 		<div class="post-status-floor">10th Floor</div>
@@ -29,8 +31,30 @@
 		<div class="post-confirmed">Confirmed: 7 min ago</div>
 	</div>
 	<div class="post-buttons">
-		<button type="button" class="post-confirm-button btn btn-success">Confirmed</button>
+        <button type="button" class="post-undelete-button btn btn-danger" style="display:none">Available again</button>
+		<button type="button" class="post-confirm-button btn btn-success">Still available</button>
 		<br />
 		<button type="button" class="post-unavailable-button btn btn-danger">Ran out</button>
 	</div>
+</div>
+
+<div class="feed-post">
+    <div class="post-status post-status-unavailable">
+        <div class="post-status-name">Unavailable</div>
+        <div class="post-status-time">11:30 AM</div>
+        <div class="post-status-floor">9th Floor</div>
+    </div>
+    <div class="post-message post-message-unavailable">
+        <div class="post-name">Sean Walsh</div>
+        <div class="post-message-text">
+            There is a single grape flavored fruit snack sitting near the paper towel roll.
+        </div>
+        <div class="post-confirmed">Ran out: 11:47 AM</div>
+    </div>
+    <div class="post-buttons ">
+        <button type="button" class="post-undelete-button btn btn-danger">Available again</button>
+        <button type="button" class="post-confirm-button btn btn-success"style="display:none">Still available</button>
+        <br />
+        <button type="button" class="post-unavailable-button btn btn-danger"style="display:none">Ran out</button>
+    </div>
 </div>

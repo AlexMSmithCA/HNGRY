@@ -1,19 +1,40 @@
-﻿.feed-post {
+﻿.feed-submission {
+    padding-bottom:10px;
+}
+
+.food-submit-message {
+    width:100%;
+}
+
+.report-food {
+    float:right;
+}
+
+.feed-post {
     display: inline-table;
     vertical-align: middle;
     box-sizing: border-box;
     border:2px solid #808080;
     border-radius:5px;
+    margin-bottom:10px;
+    width:100%;
 }
 
 .post-status {
     padding:0px 10px 0px;
     display: table-cell;
     box-sizing: border-box;
-    background-color: green;
     vertical-align: middle;
-
+    width:130px;
+    text-align:center;
 }
+
+    .post-status-available {
+        background-color: #62a957;
+    }
+    .post-status-unavailable {
+        background-color:darkgrey;
+    }
 
 .post-status-name {
     font-size:20px;
@@ -36,6 +57,9 @@
     box-sizing: border-box;
     padding:5px 10px 0px;
 }
+.post-message-unavailable {
+    color:grey;
+}
 .post-name {
     font-weight:bold;
 }
@@ -54,13 +78,17 @@
     box-sizing: border-box;
     display: table-cell;
     padding: 5px 10px 5px 5px;
+    width:140px;
 }
-
 .post-confirm-button {
     margin-bottom:10px;
     width:100%;
 }
 
 .post-unavailable-button {
+    width:100%;
+}
+
+.post-undelete-button {
     width:100%;
 }
