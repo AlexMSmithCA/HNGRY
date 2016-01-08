@@ -58,7 +58,7 @@
                 Message = messageA,
                 DateSubmitted = DateTime.Now,
                 DateConfirmed = DateTime.Now,
-                Status = false,
+                Status = true,
                 AuthorName = "Sean",
                 NumberConfirms = 1
 

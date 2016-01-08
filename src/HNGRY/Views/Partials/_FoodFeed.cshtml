@@ -4,22 +4,22 @@
 }
 
 <div class="feed-submission">
-    <form class="form-inline" role="form">
+    <div class="form-inline">
         <div class="form-group">
             <label for="sel1">Location: </label>
-            <select class="form-control" id="sel1">
-                <option>9</option>
-                <option>10</option>
-                <option>11</option>
+            <select class="submit-food-location" id="sel1">
+                <option>9th Floor</option>
+                <option>10th Floor</option>
+                <option>11th Floor</option>
                 <option>Other</option>
             </select>
         </div>
         <div class="message-box form-group">
             <label for="msg">Message: </label>
-            <input type="text" class="form-control food-submit-message" id="msg">
+            <input type="text" class="form-control submit-food-message" id="msg">
         </div>
-        <button type="submit" class="report-food btn btn-primary ">Report food</button>
-    </form>
+        <button type="submit" class="submit-food btn btn-primary ">Report food</button>
+        </div>
 </div>
 
 
@@ -42,7 +42,6 @@
                 <div class="post-confirmed">Confirmed: @FeedEntry.TimeSinceConfirm minutes ago</div>
             </div>
             <div class="post-buttons">
-                <button type="button" class="post-undelete-button btn btn-danger" style="display:none">Available again</button>
                 <button type="button" class="post-confirm-button btn btn-success">Still available</button>
                 <br />
                 <button type="button" class="post-unavailable-button btn btn-danger">Ran out</button>
@@ -65,10 +64,7 @@
                 <div class="post-confirmed">Ran out: @FeedEntry.TimeSinceConfirm minutes ago</div>
             </div>
             <div class="post-buttons ">
-                <button type="button" class="post-undelete-button btn btn-danger">Available again</button>
-                <button type="button" class="post-confirm-button btn btn-success" style="display:none">Still available</button>
-                <br />
-                <button type="button" class="post-unavailable-button btn btn-danger" style="display:none">Ran out</button>
+                <button type="button" class="post-undelete-button btn btn-success">Available again</button>
             </div>
         </div>
     }

@@ -3,7 +3,7 @@
 		/* SELECTORS */
 		SUBMIT_FOOD_LOCATION_CSS = ".submit-food-location",
         SUBMIT_FOOD_MESSAGE_CSS = ".submit-food-message",
-		SUBMIT_FOOD_BUTTON_CSS = ".submit-food-button",
+		SUBMIT_FOOD_BUTTON_CSS = ".submit-food",
 		SUBMIT_FOOD_URL = "/Data/SubmitFood",
 
 		/* CONSTANTS */
@@ -35,6 +35,7 @@
 	    })
 			.done(function () {
 			    console.log("Your question was submitted.");
+			    window.location.reload();
 			})
 			.fail(function () {
 			    console.log("Yikes!  Something went wrong :(.  Take the food and run.");
@@ -45,4 +46,5 @@
     initialize();
     renderUI();
     bindUI();
+
 });
