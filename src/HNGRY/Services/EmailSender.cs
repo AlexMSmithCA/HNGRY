@@ -3,6 +3,7 @@
 	using System.Net;
 	using System.Net.Mail;
 
+
 	public class EmailSender : IEmailSender
     {
 		private const string _hostEmail = "hngrymn@gmail.com";
@@ -18,8 +19,8 @@
 				DeliveryMethod = SmtpDeliveryMethod.Network,
 				UseDefaultCredentials = false,
 				Credentials = new NetworkCredential(_hostEmail, _hostPassword)
-			};
-			var mail = new System.Net.Mail.MailMessage(_hostEmail, email, subject, message);
+			};                        
+            var mail = new System.Net.Mail.MailMessage(_hostEmail, email, subject, message + "Reply " + " " + "if the food is gone!");
 			smtp.Send(mail);
 		}
     }

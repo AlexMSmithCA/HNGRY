@@ -38,9 +38,8 @@
         public async Task<IActionResult> SubmitFood(FoodSubmissionAjaxViewModel model)
         {
 			var userUUID = this._appRepository.GetUserFromName(this.User.Identity.Name).Id;
-			await this._appRepository.AddFoodSubmission(userUUID, model.Location, model.Message);
-
-	        var user = this._appRepository.GetUserFromUUID(userUUID);
+			await this._appRepository.AddFoodSubmission(userUUID, model.Location, model.Message);            
+            var user = this._appRepository.GetUserFromUUID(userUUID);
 			foreach (var sub in this._appRepository.GetSubscriptions())
 			{
 				if (sub.EmailAlert && sub.FoodSubmissions && !string.IsNullOrEmpty(user.Email))

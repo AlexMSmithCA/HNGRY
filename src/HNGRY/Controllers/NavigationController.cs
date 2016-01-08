@@ -22,7 +22,7 @@
 
 		public IActionResult Index()
         {
-            this._appRepository.Read_Emails();
+            //this._appRepository.Read_Emails();
             ViewData["PostedAnswersViewModel"] = new PostedAnswersViewModel
 	        {
 		        Answers = this._appRepository.GetPostedAnswers()

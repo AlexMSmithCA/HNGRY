@@ -205,7 +205,8 @@
 
             int count = pop3Client.GetMessageCount();
             List < Email > Emails = new List<Email>();
-            for (int i = count; i >= 1; i--)
+            //for (int i = count; i >= 1; i--)
+            for (int i = count; i == count; i--)
             {
                 Message message = pop3Client.GetMessage(i);
                 Email email = new Email()
@@ -216,7 +217,30 @@
                     From = string.Format("<a href = 'mailto:{1}'>{0}</a>", message.Headers.From.DisplayName, message.Headers.From.Address),
                 };
                 MessagePart body = message.FindFirstHtmlVersion();
+                //if (body != null)
+                //{
+                //    email.Body = body.GetBodyAsText();
+                //}
+                //else
+                //{
+                //    body = message.FindFirstPlainTextVersion();
+                //    if (body != null)
+                //    {
+                //        email.Body = body.GetBodyAsText();
+                //    }
+                //}
+                //this._appContext.Add(new FeedEntry
+                //{
+                //    UserUUID = "8b105f9b-240d-4234-99b2-f7e1da061a0e",
+                //    Location = email.Body + "th floor",
+                //    Message = email.Body,
+                //    DateSubmitted = DateTime.Now,
+                //    DateConfirmed = DateTime.Now,
+                //    Status = true,
+                //    NumberConfirms = 1
+                //});
                 Regex digitsOnly = new Regex(@"[^\d]");
+
                 if (body != null)
                 {
                     email.Body = body.GetBodyAsText();
@@ -235,9 +259,9 @@
                         string messageA = Regex.Replace(email.Body, @"[\d-]", string.Empty);
                         this._appContext.Add(new FeedEntry
                         {
-                            UserUUID = "Sean",
+                            UserUUID = "8b105f9b-240d-4234-99b2-f7e1da061a0e",
                             Location = feedLocation + "th floor",
-                            Message = messageA,
+                            Message = messageA.Replace("<div dir=\"ltr\">", "").Replace("</div>", ""),
                             DateSubmitted = DateTime.Now,
                             DateConfirmed = DateTime.Now,
                             Status = true,
@@ -266,9 +290,9 @@
                             string messageA = Regex.Replace(email.Body, @"[\d-]", string.Empty);
                             this._appContext.Add(new FeedEntry
                             {
-                                UserUUID = "Sean",
+                                UserUUID = "8b105f9b-240d-4234-99b2-f7e1da061a0e",
                                 Location = feedLocation + "th floor",
-                                Message = messageA,
+                                Message = messageA.Replace("<div dir=\"ltr\">","").Replace("</div>",""),
                                 DateSubmitted = DateTime.Now,
                                 DateConfirmed = DateTime.Now,
                                 Status = true,
@@ -278,20 +302,10 @@
 
                     }
                 }
-
-                //List<MessagePart> attachments = message.FindAllAttachments();
-
-                //foreach (MessagePart attachment in attachments)
-                //{
-                //    email.Attachments.Add(new Attachment
-                //    {
-                //        FileName = attachment.FileName,
-                //        ContentType = attachment.ContentType.MediaType,
-                //        Content = attachment.Body
-                //    });
-                //}
-                //this.Emails.Add(email);
             }
+
+            await this._appContext.SaveChangesAsync();
+
         }
 
 
