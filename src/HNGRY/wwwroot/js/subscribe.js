@@ -81,9 +81,6 @@
 			.done(function () {
 			    console.log("Subscription updated!");
 			    $(SUBSCRIBE_SUCCESS_CSS).show();
-			    $(SUBSCRIBE_NAME_CSS).val("");
-			    $(SUBSCRIBE_EMAIL_CSS).val("");
-			    $(SUBSCRIBE_PHONE_CSS).val("");
 			})
 			.fail(function () {
 			    console.log("Oh no, you won't get food updates");
