@@ -75,4 +75,28 @@ hidden {
 	color: #AAAAAA !important;
 }
 
+.calendar-image {
+    padding-top: 17px;
+}
 
+.panel {
+    position:relative;
+}
+.answer-author {
+    font-weight:bold;
+}
+
+.answer-message {
+    margin-left:10px;
+    padding-bottom:10px;
+}
+
+.answer-time {
+    position:absolute;
+    bottom:0px;
+    left:0px;
+    font-style:italic;
+    color:grey;
+    margin-left:23px;
+    padding:5px 0px 0px 5px;
+}

@@ -21,7 +21,9 @@
 	bindUI = function () {
 	    // Put any bindings here
 	    $(SUBMIT_FOOD_BUTTON_CSS).on(CLICK, function (event) {
-	        _submitFood();
+	        if ($(SUBMIT_FOOD_MESSAGE_CSS).val() != "") {
+	            _submitFood();
+	        }
 	    });
 	},
 

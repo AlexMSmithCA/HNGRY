@@ -5,14 +5,16 @@
 
 
 <div>
-	<h1>Responses from Bonnie and Dale</h1>
+	<h4>Question responses from food@apt</h4>
 	@foreach (var answer in _model.Answers)
 	{
 
 		<div class="panel panel-default">
 			<div class="panel-heading">@answer.Title</div>
 			<div class="panel-body">
-				@answer.AuthorName (@answer.DateSubmittedDisplayString) @answer.Message
+                <div class="answer-author">@answer.AuthorName</div>
+                <div class="answer-message">@answer.Message</div>
+				<div class="answer-time"> Posted: @answer.DateSubmittedDisplayString</div>
 			</div>
 		</div>
 	}

@@ -30,13 +30,13 @@
                 @await Html.PartialAsync(@"../Partials/_Calendar")
             </div>
 
-	        <div>
-		        @await Html.PartialAsync("../Partials/_QuestionSubmission")
-	        </div>
-
 			<div>
 				@await Html.PartialAsync("../Partials/_QuestionAnswers", (PostedAnswersViewModel)this.ViewData["PostedAnswersViewModel"])
 			</div>
+
+            <div>
+                @await Html.PartialAsync("../Partials/_QuestionSubmission")
+            </div>
         </div>
         <div class="col-md-1">
         </div>

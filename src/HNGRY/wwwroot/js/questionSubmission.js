@@ -20,7 +20,9 @@
 	bindUI = function () {
 	    // Put any bindings here
 	    $(SUBMIT_QUESTION_BUTTON_CSS).on(CLICK, function (event) {
-	        _submitQuestion();
+	        if ($(SUBMIT_QUESTION_TEXT_CSS).val() != "") {
+	            _submitQuestion();
+	        }
 	    });
 	},
 

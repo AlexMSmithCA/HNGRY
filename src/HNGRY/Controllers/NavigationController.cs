@@ -29,7 +29,7 @@
 						{
 							Title = a.Title, 
 							AuthorName = a.AuthorName,
-							DateSubmittedDisplayString = a.DateSubmitted.ToString(),
+							DateSubmittedDisplayString = a.DateSubmitted.ToString("MM/dd/yyyy"),
 							Message = a.Message
 						})
 					.OrderByDescending(a => a.DateSubmittedDisplayString)
