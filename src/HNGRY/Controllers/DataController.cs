@@ -12,18 +12,21 @@
 	public class DataController : Controller
     {
 		private IAppDbRepository _appRepository { get; set; }
+		private IEmailSender _emailSender { get; set; }
 
-	    public DataController(IAppDbRepository appRepository)
+	    public DataController(
+			IAppDbRepository appRepository,
+			IEmailSender emailSender)
 	    {
 		    this._appRepository = appRepository;
+		    this._emailSender = emailSender;
 	    }
 
 		[HttpPost]
 		public async Task<IActionResult> SubmitQuestion(QuestionSubmissionAjaxViewModel model)
 		{
+			this._emailSender.SendEmail("BStankey@predictiveTechnologies.com", "New HNGRY Question", model.Question);
 			await this._appRepository.AddQuestionSubmission(model.Question);
-
-			//var myQs = this._appRepository.GetQuestionSubmissions();
 
 			return new JsonResult(new { Message = "Question submitted!" });
 		}

@@ -44,16 +44,6 @@
 
 	    public async Task AddQuestionSubmission(string question)
 	    {
-            SmtpClient smtp = new SmtpClient();
-            smtp.Host = "smtp.gmail.com";
-            smtp.Port = 587;
-            smtp.EnableSsl = true;
-            smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
-            smtp.UseDefaultCredentials = false;
-            smtp.Credentials = new NetworkCredential("hngrymn@gmail.com", "APT12345");
-            System.Net.Mail.MailMessage mail = new System.Net.Mail.MailMessage("hngrymn@gmail.com","BStankey@predictiveTechnologies.com","New HNGRY Question", question);
-            smtp.Send(mail);
-
             this._appContext.Add(new QuestionSubmission
 		    {
 				QuestionText = question
