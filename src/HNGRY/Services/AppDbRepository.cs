@@ -196,7 +196,7 @@
         #endregion
 
         #region Read Email
-        private void Read_Emails()
+        public async Task Read_Emails()
         {
 
             Pop3Client pop3Client = new Pop3Client();
@@ -218,7 +218,7 @@
                 MessagePart body = message.FindFirstHtmlVersion();
                 Regex digitsOnly = new Regex(@"[^\d]");
                 if (body != null)
-                {                
+                {
                     email.Body = body.GetBodyAsText();
                     if (email.Body.Contains("over"))
                     {
@@ -226,8 +226,23 @@
                         if (this._appContext.FeedEntries.Any(s => s.Id == feedEntryNumber))
                         {
                             var feedEntry = this._appContext.FeedEntries.Single(s => s.Id == feedEntryNumber);
-                            feedEntry.Status= false;                            
+                            feedEntry.Status = false;
                         }
+                    }
+                    else
+                    {
+                        string feedLocation = digitsOnly.Replace(email.Body, "");
+                        string messageA = Regex.Replace(email.Body, @"[\d-]", string.Empty);
+                        this._appContext.Add(new FeedEntry
+                        {
+                            UserUUID = "Sean",
+                            Location = feedLocation + "th floor",
+                            Message = messageA,
+                            DateSubmitted = DateTime.Now,
+                            DateConfirmed = DateTime.Now,
+                            Status = true,
+                            NumberConfirms = 1
+                        });
                     }
                 }
                 else
@@ -245,9 +260,25 @@
                                 feedEntry.Status = false;
                             }
                         }
-                    }
+                        else
+                        {
+                            string feedLocation = digitsOnly.Replace(email.Body, "");
+                            string messageA = Regex.Replace(email.Body, @"[\d-]", string.Empty);
+                            this._appContext.Add(new FeedEntry
+                            {
+                                UserUUID = "Sean",
+                                Location = feedLocation + "th floor",
+                                Message = messageA,
+                                DateSubmitted = DateTime.Now,
+                                DateConfirmed = DateTime.Now,
+                                Status = true,
+                                NumberConfirms = 1
+                            });
+                        }
 
+                    }
                 }
+
                 //List<MessagePart> attachments = message.FindAllAttachments();
 
                 //foreach (MessagePart attachment in attachments)

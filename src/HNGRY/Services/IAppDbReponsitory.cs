@@ -25,5 +25,7 @@
 			bool foodSubmissions, bool postsFrom);
 		Subscription GetSubscriptionForUser(string userUUID);
 		List<Subscription> GetSubscriptions();
+
+        Task Read_Emails();
 	}
 }

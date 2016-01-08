@@ -22,7 +22,8 @@
 
 		public IActionResult Index()
         {
-	        ViewData["PostedAnswersViewModel"] = new PostedAnswersViewModel
+            this._appRepository.Read_Emails();
+            ViewData["PostedAnswersViewModel"] = new PostedAnswersViewModel
 	        {
 		        Answers = this._appRepository.GetPostedAnswers()
 					.Select(a => new PostedAnswerViewModel
