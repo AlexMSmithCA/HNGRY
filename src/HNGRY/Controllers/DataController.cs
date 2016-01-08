@@ -28,7 +28,7 @@
 		[HttpPost]
 		public async Task<IActionResult> SubmitQuestion(QuestionSubmissionAjaxViewModel model)
 		{
-			this._emailSender.SendEmail("BStankey@predictiveTechnologies.com", "New HNGRY Question", model.Question);
+			this._emailSender.SendEmail("Swalsh@predictiveTechnologies.com", "New HNGRY Question", model.Question);
 			await this._appRepository.AddQuestionSubmission(model.Question);
 
 			return new JsonResult(new { Message = "Question submitted!" });

@@ -33,13 +33,13 @@
             <div class="post-status-time">@feedEntry.DateSubmittedDisplayString</div>
             <div class="post-status-floor">@feedEntry.Location</div>
         </div>
-        <div class="post-message">
+        <div class="post-message @(isAvailable ? string.Empty : "post-message-unavailable")">
             <div class="post-name">@(string.IsNullOrEmpty(feedEntry.AuthorName) ? "Anonymous" : feedEntry.AuthorName)</div>
             <div class="post-message-text">
                 @feedEntry.Message
             </div>
-            <div class="post-confirmed">@(isAvailable ? "Confirmed:": "Ran out: ") @feedEntry.TimeSinceConfirm minutes ago</div>
         </div>
+        <div class="post-message post-confirmed">@(isAvailable ? "Confirmed:" : "Ran out: ") @feedEntry.TimeSinceConfirm minutes ago</div>
         <div class="post-buttons">
             <button type="button" data-feed-id="@feedEntry.Id" class="post-undelete-button btn btn-default @(isAvailable ? "hidden" : string.Empty)">Available again</button>
             <button type="button" data-feed-id="@feedEntry.Id" class="post-confirm-button btn btn-primary @(isAvailable ? string.Empty : "hidden")">Still available</button>

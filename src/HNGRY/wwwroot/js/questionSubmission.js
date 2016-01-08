@@ -1,7 +1,7 @@
 ﻿$(document).ready(function() {
 	var
 		/* SELECTORS */
-		SUBMIT_QUESTION_TEXT_CSS = ".question-message",
+		SUBMIT_QUESTION_TEXT_CSS = "#question-message",
 		SUBMIT_QUESTION_BUTTON_CSS = ".submit-question-button",
 		SUBMIT_QUESTION_URL = "/Data/SubmitQuestion",
         SUBSCRIBE_SUCCESS_CSS = ".success-message",
@@ -34,6 +34,7 @@
 			.done(function () {
 			    console.log("Your question was submitted.");
 			    $(SUBSCRIBE_SUCCESS_CSS).show();
+			    $(SUBMIT_QUESTION_TEXT_CSS).val("");
 			})
 			.fail(function () {
 			    console.log("Yikes!  Something went wrong :(.  Take the food and run.");
