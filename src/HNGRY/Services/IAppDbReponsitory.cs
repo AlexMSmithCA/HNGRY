@@ -10,7 +10,7 @@
 	    Task AddQuestionSubmission(string question);
 
 		List<PostedAnswer> GetPostedAnswers();
-		Task AddPostedAnswer(string authorName, string message);
+		Task AddPostedAnswer(string title, string authorName, string message);
 
         List<FeedEntry> GetFeedEntries();
         Task UpdateFeedEntry(int id, UpdateFeedEntryChangeType changeType);

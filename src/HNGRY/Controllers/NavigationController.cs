@@ -22,7 +22,8 @@
 	        {
 		        Answers = this._appRepository.GetPostedAnswers().Select(a => new PostedAnswerViewModel
 						{
-							AuthorName = a.AuthorName,
+                            Title=a.Title, 
+                            AuthorName = a.AuthorName,
 							DateSubmittedDisplayString = a.DateSubmitted.ToString(),
 							Message = a.Message
 						})
@@ -68,6 +69,12 @@
         public IActionResult Subscribe()
         {
             ViewData["Message"] = "Subscribe to Go/Food";
+
+            return View();
+        }
+        public IActionResult ResponseForm()
+        {
+            ViewData["Message"] = "Post question responses";
 
             return View();
         }

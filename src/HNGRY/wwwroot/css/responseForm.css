@@ -1,0 +1,15 @@
+﻿#response-title {
+    width:50%;
+}
+
+#response-message {
+    width:50%;
+}
+
+#response-author {
+    width:50%;
+}
+
+.submit-response-success {
+    display:none;
+}
