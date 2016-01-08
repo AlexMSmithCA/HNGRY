@@ -18,6 +18,18 @@
 		    this._appContext = appContext;
 
 	    }
+
+	    public List<User> GetUsers()
+	    {
+		    return this._appContext.Users.ToList();
+	    }
+
+	    public User GetUserFromName(string username)
+	    {
+		    return this.GetUsers().SingleOrDefault(u => u.UserName == username);
+	    }
+
+
 	    public List<QuestionSubmission> GetQuestionSubmissions()
 	    {
 		    return this._appContext.QuestionSubmissions.ToList();

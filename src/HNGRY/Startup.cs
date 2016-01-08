@@ -1,4 +1,7 @@
-﻿namespace HNGRY
+﻿using HNGRY.Attributes;
+using Microsoft.AspNet.Identity.EntityFramework;
+
+namespace HNGRY
 {
 	using System;
 	using Autofac;
@@ -42,7 +45,23 @@
                 .AddDbContext<AppDbContext>(options =>
                     options.UseSqlServer(Configuration["Data:DefaultConnection:ConnectionString"]));
 
-	        services.AddMvc()
+			services.AddIdentity<User, IdentityRole>(a =>
+					{
+						a.Password.RequireDigit = false;
+						a.Password.RequireLowercase = false;
+						a.Password.RequireNonLetterOrDigit = false;
+						a.Password.RequireUppercase = false;
+						a.Password.RequiredLength = 0;
+						a.User.AllowedUserNameCharacters = a.User.AllowedUserNameCharacters + "\\";
+						a.User.RequireUniqueEmail = false;
+						a.SignIn.RequireConfirmedEmail = false;
+						a.SignIn.RequireConfirmedPhoneNumber = false;
+
+					})
+				.AddEntityFrameworkStores<AppDbContext>()
+				.AddDefaultTokenProviders();
+
+			services.AddMvc()
 		        .AddJsonOptions(opt => opt.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver());
 
             // Add application services.
@@ -55,8 +74,8 @@
 	        services.AddTransient<SampleDataSeeder>();
             services.AddTransient<SeedFeedEntries>();
 
-            var builder = new ContainerBuilder();
-	        builder.Populate(services);
+	        var builder = new ContainerBuilder();
+			builder.Populate(services);
 
 	        Startup.ServiceLocator = builder.Build();
 	        return ServiceLocator.Resolve<IServiceProvider>();
@@ -96,9 +115,11 @@
 
             app.UseStaticFiles();
 
-            // To configure external authentication please see http://go.microsoft.com/fwlink/?LinkID=532715
+			app.UseIdentity();
 
-            app.UseMvc(routes =>
+			// To configure external authentication please see http://go.microsoft.com/fwlink/?LinkID=532715
+
+			app.UseMvc(routes =>
             {
                 routes.MapRoute(
                     name: "default",

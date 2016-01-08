@@ -4,7 +4,11 @@
 	using HNGRY.Services;
 	using Microsoft.AspNet.Mvc;
 	using HNGRY.ViewModels.Ajax;
+	using HNGRY.Attributes;
+	using Microsoft.AspNet.Authorization;
 
+	[Authorize]
+	[AutoLogin]
 	public class DataController : Controller
     {
 		private IAppDbRepository _appRepository { get; set; }

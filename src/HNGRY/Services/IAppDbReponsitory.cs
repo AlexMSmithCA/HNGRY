@@ -5,8 +5,11 @@
 	using HNGRY.Models;
 
 	public interface IAppDbRepository
-    {
-	    List<QuestionSubmission> GetQuestionSubmissions();
+	{
+		List<User> GetUsers();
+		User GetUserFromName(string username);
+
+		List<QuestionSubmission> GetQuestionSubmissions();
 	    Task AddQuestionSubmission(string question);
 
 		List<PostedAnswer> GetPostedAnswers();

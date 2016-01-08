@@ -1,22 +1,26 @@
 ﻿namespace HNGRY.Controllers
 {
-
-    using System.Threading.Tasks;
     using HNGRY.Services;
+	using Microsoft.AspNet.Authorization;
 	using HNGRY.ViewModels;
 	using Microsoft.AspNet.Mvc;
 	using System.Linq;
+	using HNGRY.Attributes;
+	using System.Security.Claims;
 
+	[Authorize]
+	[AutoLogin]
 	public class NavigationController : Controller
-    {
-		private IAppDbRepository _appRepository { get; set; }
+	{
+		private readonly IAppDbRepository _appRepository;
 
-	    public NavigationController(IAppDbRepository appRepository)
+		public NavigationController(IAppDbRepository appRepository)
 	    {
+
 		    this._appRepository = appRepository;
 	    }
 
-        public IActionResult Index()
+		public IActionResult Index()
         {
 	        ViewData["PostedAnswersViewModel"] = new PostedAnswersViewModel
 	        {
@@ -52,14 +56,16 @@
             return View();
         }
 
-        public IActionResult About()
+		[AllowAnonymous]
+		public IActionResult About()
         {
-            ViewData["Message"] = "Your application description page.";
+            ViewData["Message"] = $"Your application description page. -- {User.Identity.Name} SignedIn{User.IsSignedIn()} UserId{User.GetUserId()} Auth{User.Identity.IsAuthenticated}";
 
             return View();
         }
 
-        public IActionResult Contact()
+		[AllowAnonymous]
+		public IActionResult Contact()
         {
             ViewData["Message"] = "Your contact page.";
 
@@ -79,7 +85,8 @@
             return View();
         }
 
-        public IActionResult Error()
+		[AllowAnonymous]
+		public IActionResult Error()
         {
             return View();
         }

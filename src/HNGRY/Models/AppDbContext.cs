@@ -1,8 +1,10 @@
-﻿namespace HNGRY.Models
+﻿using Microsoft.AspNet.Identity.EntityFramework;
+
+namespace HNGRY.Models
 {
 	using Microsoft.Data.Entity;
 
-	public class AppDbContext : DbContext
+	public class AppDbContext : IdentityDbContext<User>
     {
 	    public AppDbContext()
 	    {
