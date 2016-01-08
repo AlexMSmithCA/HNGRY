@@ -9,5 +9,6 @@
 	    List<QuestionSubmission> GetQuestionSubmissions();
 	    Task AddQuestionSubmission(string question);
         Task AddFoodSubmission(string locationA, string messageA);
+        Task AddSubscriber(int phone, int foodSubmissions, string email, int postsFrom, int emailAlert, int textAlert);
     }
 }

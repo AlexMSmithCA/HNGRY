@@ -15,5 +15,7 @@ namespace HNGRY.Models
 		public DbSet<QuestionSubmission> QuestionSubmissions { get; set; }
 
         public DbSet<PostedAnswer> PostedAnswers { get; set; }
+
+        public DbSet<Subscription> Subscriptions { get; set; }
     }
 }

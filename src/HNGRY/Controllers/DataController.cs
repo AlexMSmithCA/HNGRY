@@ -31,5 +31,13 @@
 
             return new JsonResult(new { Message = "Food submitted!" });
         }
+
+        [HttpPost]
+        public async Task<IActionResult> Subscribe(SubscribeAjaxViewModel model)
+        {
+            await this._appRepository.AddSubscriber(model.Phone, model.FoodSubmissions, model.Email, model.PostsFrom, model.EmailAlert, model.TextAlert);
+
+            return new JsonResult(new { Message = "Subscription Updated" });
+        }
     }
 }

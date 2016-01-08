@@ -38,5 +38,19 @@
             });
             await this._appContext.SaveChangesAsync();
         }
+
+        public async Task AddSubscriber(int phone, int foodSubmissions, string email, int postsFrom, int emailAlert, int textAlert)
+        {
+            this._appContext.Add(new Subscription
+            {
+                Phone= phone,
+                FoodSubmissions = foodSubmissions,
+                Email = email,
+                PostsFrom = postsFrom,
+                EmailAlert = emailAlert,
+                TextAlert = textAlert
+            });
+            await this._appContext.SaveChangesAsync();
+        }
     }
 }
