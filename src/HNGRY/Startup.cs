@@ -79,7 +79,8 @@
                         .CreateScope())
                     {
                         serviceScope.ServiceProvider.GetService<AppDbContext>()
-                             .Database.Migrate();
+                             .Database
+							 .EnsureCreated();
                     }
                 }
                 catch { }

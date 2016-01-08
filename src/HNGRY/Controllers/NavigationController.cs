@@ -1,11 +1,9 @@
 ﻿namespace HNGRY.Controllers
 {
-	using System.Threading.Tasks;
 	using HNGRY.Services;
 	using HNGRY.ViewModels;
 	using Microsoft.AspNet.Mvc;
-	using System.Collections.Generic;
-	using HNGRY.Models;
+	using System.Linq;
 
 	public class NavigationController : Controller
     {
@@ -18,23 +16,33 @@
 
         public IActionResult Index()
         {
-            ViewData["PostedAnswers"] = new List<PostedAnswer>
-            {
-                new PostedAnswer
-                {
-                    AuthorName = "Dale",
-                    Message = "No more dunkaroos",
-                    Question = new QuestionSubmission {QuestionText = "WHY DONT WE HAVE DUNKAROOS?" }
-                },
-                new PostedAnswer
-                {
-                    AuthorName = "Dale",
-                    Message = "No more dunkaroos seriously",
-                    Question = new QuestionSubmission {QuestionText = "Why don't we have those dunking snacks?" }
-                }
-            };
+	        ViewData["PostedAnswersViewModel"] = new PostedAnswersViewModel
+	        {
+		        Answers = this._appRepository.GetPostedAnswers().Select(a => new PostedAnswerViewModel
+						{
+							AuthorName = a.AuthorName,
+							DateSubmittedDisplayString = a.DateSubmitted.ToString(),
+							Message = a.Message
+						})
+					.ToList()
+	        };
 
-            //ViewData["PostedAnswers2"] = this._appContext.PostedAnswers.ToList();
+            //ViewData["PostedAnswers"] = new List<PostedAnswer>
+            //{
+            //    new PostedAnswer
+            //    {
+            //        AuthorName = "Dale",
+            //        Message = "No more dunkaroos",
+            //        Question = new QuestionSubmission {QuestionText = "WHY DONT WE HAVE DUNKAROOS?" }
+            //    },
+            //    new PostedAnswer
+            //    {
+            //        AuthorName = "Dale",
+            //        Message = "No more dunkaroos seriously",
+            //        Question = new QuestionSubmission {QuestionText = "Why don't we have those dunking snacks?" }
+            //    }
+            //};
+
             return View();
         }
 

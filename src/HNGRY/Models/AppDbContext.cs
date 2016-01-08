@@ -1,13 +1,12 @@
-﻿using Microsoft.AspNet.Identity.EntityFramework;
-using Microsoft.Data.Entity;
-
-namespace HNGRY.Models
+﻿namespace HNGRY.Models
 {
-    public class AppDbContext : DbContext
+	using Microsoft.Data.Entity;
+
+	public class AppDbContext : DbContext
     {
 	    public AppDbContext()
 	    {
-		    //this.Database.EnsureCreated();
+		    this.Database.EnsureCreated();
 	    }
 
         public DbSet<FeedEntry> FeedEntries { get; set; } 

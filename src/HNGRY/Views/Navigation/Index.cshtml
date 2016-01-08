@@ -1,7 +1,7 @@
-﻿@{
-	ViewData["Title"] = string.Empty;
-    var postedAnswers = (List<PostedAnswer>)ViewData["PostedAnswers"];
-    var postedAnswers2 = (List<PostedAnswer>)ViewData["PostedAnswers2"];
+﻿@using System.Threading.Tasks
+@using HNGRY.ViewModels
+
+@{
 }
 
 @section Styles {
@@ -29,10 +29,14 @@
                 @await Html.PartialAsync(@"../Partials/_Calendar")
             </div>
 
-            <div>
-	            @await Html.PartialAsync("../Partials/_QuestionSubmission")
-            </div>
-           </div>
+	        <div>
+		        @await Html.PartialAsync("../Partials/_QuestionSubmission")
+	        </div>
+
+			<div>
+				@await Html.PartialAsync("../Partials/_QuestionAnswers", (PostedAnswersViewModel)this.ViewData["PostedAnswersViewModel"]);
+			</div>
+        </div>
         <div class="col-md-1">
         </div>
     </div>
