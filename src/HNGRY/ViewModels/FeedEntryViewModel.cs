@@ -25,6 +25,6 @@
 
         public int TimeSinceConfirm { get; set; }
 
-
+        public long TimeOrder { get; set; }
     }
 }
