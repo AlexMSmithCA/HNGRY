@@ -24,7 +24,6 @@
 		Task AddSubscriber(string userUUID, string name, string email, string phone, bool emailAlert, bool textAlert,
 			bool foodSubmissions, bool postsFrom);
 		Subscription GetSubscriptionForUser(string userUUID);
-
-
+		List<Subscription> GetSubscriptions();
 	}
 }

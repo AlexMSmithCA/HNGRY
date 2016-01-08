@@ -13,13 +13,16 @@
     {
 		private IAppDbRepository _appRepository { get; set; }
 		private IEmailSender _emailSender { get; set; }
+		private ISmsSender _smsSender { get; set; }
 
 	    public DataController(
 			IAppDbRepository appRepository,
-			IEmailSender emailSender)
+			IEmailSender emailSender,
+			ISmsSender smsSender)
 	    {
 		    this._appRepository = appRepository;
 		    this._emailSender = emailSender;
+		    this._smsSender = smsSender;
 	    }
 
 		[HttpPost]
@@ -37,7 +40,20 @@
 			var userUUID = this._appRepository.GetUserFromName(this.User.Identity.Name).Id;
 			await this._appRepository.AddFoodSubmission(userUUID, model.Location, model.Message);
 
-            return new JsonResult(new { Message = "Food submitted!" });
+	        var user = this._appRepository.GetUserFromUUID(userUUID);
+			foreach (var sub in this._appRepository.GetSubscriptions())
+			{
+				if (sub.EmailAlert && sub.FoodSubmissions && !string.IsNullOrEmpty(user.Email))
+				{
+					this._emailSender.SendEmail(user.Email, "Food at APT (" + model.Location + ")", model.Message);
+				}
+				if (sub.TextAlert && sub.FoodSubmissions && !string.IsNullOrEmpty(user.PhoneNumber))
+				{
+					this._smsSender.SendSms(user.PhoneNumber, "Food at APT (" + model.Location + ") - " + model.Message);
+				}
+			}
+
+			return new JsonResult(new { Message = "Food submitted!" });
         }
 
         [HttpPost]
