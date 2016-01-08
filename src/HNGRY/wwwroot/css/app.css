@@ -46,3 +46,28 @@ textarea {
 hidden {
     display: none !important;
 }
+
+.btn-success {
+    background-color:#337ab7;
+    border-color:#2e6da4;
+}
+.btn-success:hover {
+    background-color:#2e6da4;
+    border-color:#2e6da4;
+}
+.btn-success:active {
+    background-color:#2e6da4;
+    border-color:#2e6da4;
+}
+
+.btn-default {
+    background-color:#808080;
+    border-color:#5F5F5F;
+}
+.btn-default {
+    background-color:#5F5F5F;
+    border-color:#5F5F5F;
+}
+
+
+

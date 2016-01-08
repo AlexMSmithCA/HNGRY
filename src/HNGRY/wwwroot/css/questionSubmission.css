@@ -24,3 +24,8 @@ textarea {
 h4{
     text-align:center
 }
+
+.submit-question-button {
+    width:30%;
+    margin: 0 auto;
+}

@@ -38,10 +38,10 @@
 }
 
     .post-status-available {
-        background-color: #62a957;
+        background-color:#5D95BF;
     }
     .post-status-unavailable {
-        background-color:darkgrey;
+        background-color:#808080;
     }
 
 .post-status-name {
@@ -104,7 +104,6 @@
     width:100%;
     margin-bottom:20px;
     height:35px;
-    background-color:grey;
     color:white;
 }
 
