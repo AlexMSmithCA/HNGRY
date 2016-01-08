@@ -153,6 +153,7 @@
 	        if (string.IsNullOrEmpty(userUUID)) throw new ArgumentException("UserUUID must be popualted");
 
 	        var user = GetUserFromUUID(userUUID);
+			user.FullName = name;
 			user.PhoneNumber = phone;
 	        user.Email = email;
 

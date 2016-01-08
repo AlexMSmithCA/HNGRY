@@ -1,7 +1,4 @@
-﻿using HNGRY.Attributes;
-using Microsoft.AspNet.Identity.EntityFramework;
-
-namespace HNGRY
+﻿namespace HNGRY
 {
 	using System;
 	using Autofac;
@@ -17,6 +14,7 @@ namespace HNGRY
 	using Microsoft.Extensions.PlatformAbstractions;
 	using Newtonsoft.Json.Serialization;
 	using HNGRY.SampleSeeder;
+	using Microsoft.AspNet.Identity.EntityFramework;
 
 	public class Startup
     {

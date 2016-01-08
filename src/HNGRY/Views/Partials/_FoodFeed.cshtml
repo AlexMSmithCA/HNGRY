@@ -34,7 +34,7 @@
             <div class="post-status-floor">@feedEntry.Location</div>
         </div>
         <div class="post-message">
-            <div class="post-name">@feedEntry.AuthorName</div>
+            <div class="post-name">@(string.IsNullOrEmpty(feedEntry.AuthorName) ? "Anonymous" : feedEntry.AuthorName)</div>
             <div class="post-message-text">
                 @feedEntry.Message
             </div>
