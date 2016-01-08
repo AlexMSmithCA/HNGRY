@@ -29,7 +29,23 @@
 		    await this._appContext.SaveChangesAsync();
 	    }
 
-        public async Task AddFoodSubmission(string locationA, string messageA)
+	    public List<PostedAnswer> GetPostedAnswers()
+	    {
+		    return this._appContext.PostedAnswers.ToList();
+	    }
+
+	    public async Task AddPostedAnswer(string authorName, string message)
+	    {
+			this._appContext.Add(new PostedAnswer
+			{
+				AuthorName = authorName,
+				Message = message,
+				DateSubmitted = DateTime.Now
+			});
+			await this._appContext.SaveChangesAsync();
+		}
+
+	    public async Task AddFoodSubmission(string locationA, string messageA)
         {
             this._appContext.Add(new FeedEntry
             {

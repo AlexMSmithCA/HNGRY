@@ -8,6 +8,10 @@
     {
 	    List<QuestionSubmission> GetQuestionSubmissions();
 	    Task AddQuestionSubmission(string question);
+
+		List<PostedAnswer> GetPostedAnswers();
+		Task AddPostedAnswer(string authorName, string message);
+
         Task AddFoodSubmission(string locationA, string messageA);
     }
 }
