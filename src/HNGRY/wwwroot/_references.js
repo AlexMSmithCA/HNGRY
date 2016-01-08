@@ -3,8 +3,9 @@
 /// <reference path="js/app.js" />
 /// <reference path="js/foodfeed.js" />
 /// <reference path="js/foodsubmission.js" />
+/// <reference path="js/PostedAnswer.js" />
 /// <reference path="js/questionsubmission.js" />
-/// <reference path="js/site - copy.js" />
+/// <reference path="js/subscription.js" />
 /// <reference path="lib/bootstrap/dist/js/bootstrap.js" />
 /// <reference path="lib/jquery/dist/jquery.js" />
 /// <reference path="lib/jquery-validation/dist/jquery.validate.js" />
