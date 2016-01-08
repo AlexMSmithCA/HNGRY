@@ -4,6 +4,7 @@
 		SUBMIT_QUESTION_TEXT_CSS = ".submit-question-text",
 		SUBMIT_QUESTION_BUTTON_CSS = ".submit-question-button",
 		SUBMIT_QUESTION_URL = "/Data/SubmitQuestion",
+        SUBSCRIBE_SUCCESS_CSS = ".success-message",
 
 		/* CONSTANTS */
 		CLICK = "click",
@@ -32,8 +33,8 @@
 				data: { text: questionToSubmit }
 			})
 			.done(function () {
-
-				console.log("Your question was submitted.");
+			    console.log("Your question was submitted.");
+			    $(SUBSCRIBE_SUCCESS_CSS).show();
 			})
 			.fail(function () {
 				console.log("Yikes!  Something went wrong :(.  Please contact Sean Walsh for assistance.");

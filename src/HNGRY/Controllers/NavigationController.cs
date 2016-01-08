@@ -42,7 +42,7 @@
                     Status = a.Status,
                     TimeSinceConfirm = (int)System.DateTime.Now.Subtract(a.DateConfirmed).TotalMinutes,
                     NumberConfirms = a.NumberConfirms
-                })
+                }).OrderByDescending(f => f.DateSubmittedDisplayString)
                 .ToList()
             };
 
