@@ -1,11 +1,12 @@
 ﻿namespace HNGRY.Services
 {
-	using System.Collections.Generic;
-	using System.Linq;
-	using System.Threading.Tasks;
-	using HNGRY.Models;
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Threading.Tasks;
+    using HNGRY.Models;
 
-	public class AppDbRepository : IAppDbRepository
+    public class AppDbRepository : IAppDbRepository
     {
 	    public AppDbContext _appContext;
 
@@ -27,5 +28,15 @@
 		    });
 		    await this._appContext.SaveChangesAsync();
 	    }
+
+        public async Task AddFoodSubmission(string locationA, string messageA)
+        {
+            this._appContext.Add(new FeedEntry
+            {
+                Location = locationA,
+                Message = messageA
+            });
+            await this._appContext.SaveChangesAsync();
+        }
     }
 }

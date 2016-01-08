@@ -23,5 +23,13 @@
 
 			return new JsonResult(new { Message = "Question submitted!" });
 		}
-	}
+
+        [HttpPost]
+        public async Task<IActionResult> SubmitFood(FoodSubmissionAjaxViewModel model)
+        {
+            await this._appRepository.AddFoodSubmission(model.Location, model.Message);
+
+            return new JsonResult(new { Message = "Food submitted!" });
+        }
+    }
 }
