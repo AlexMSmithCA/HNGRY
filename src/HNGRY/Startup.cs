@@ -1,7 +1,4 @@
-﻿using System.Threading.Tasks;
-using HNGRY.SampleSeeder;
-
-namespace HNGRY
+﻿namespace HNGRY
 {
 	using System;
 	using Autofac;
@@ -16,6 +13,7 @@ namespace HNGRY
 	using HNGRY.Services;
 	using Microsoft.Extensions.PlatformAbstractions;
 	using Newtonsoft.Json.Serialization;
+	using HNGRY.SampleSeeder;
 
 	public class Startup
     {
