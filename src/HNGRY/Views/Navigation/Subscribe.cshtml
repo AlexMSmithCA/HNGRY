@@ -1,0 +1,61 @@
+﻿@{
+    ViewData["Title"] = "Subscribe";
+}
+<h2>@ViewData["Title"].</h2>
+<h3>@ViewData["Message"]</h3>
+
+<br />
+<form>
+    <div class="form-group row">
+        <label for="inputEmail3" class="col-sm-2 form-control-label">Email</label>
+        <div class="col-sm-10">
+            <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="inputPhoneNumber3" class="col-sm-2 form-control-label">Phone number</label>
+        <div class="col-sm-10">
+            <input type="tel" class="form-control" id="inputPhoneNumber3" placeholder="Phone number"><!need to change input type>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-sm-2">Tell me about</label>
+        <div class="col-sm-10">
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox"> Food submissions
+                </label>
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox"> Calendar updates
+                </label>
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox"> Posts from Bonnie and Dale
+                </label>
+            </div>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-sm-2">Alert me via</label>
+        <div class="col-sm-10">
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox"> Email
+                </label>
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox"> Text
+                </label>
+            </div>
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-primary">Update subscription</button>
+        </div>
+    </div>
+</form>

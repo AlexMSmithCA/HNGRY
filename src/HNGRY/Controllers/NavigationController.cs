@@ -52,6 +52,13 @@
             return View();
         }
 
+        public IActionResult Subscribe()
+        {
+            ViewData["Message"] = "Subscribe to Go/Food";
+
+            return View();
+        }
+
         public IActionResult Error()
         {
             return View();
