@@ -70,11 +70,12 @@ namespace HNGRY
 	        services.AddScoped<IAppDbRepository, AppDbRepository>();
 
 			// Data seeding services
-	        services.AddTransient<SeedPostedAnswers>();
-	        services.AddTransient<SampleDataSeeder>();
+			services.AddTransient<SeedUsers>();
+			services.AddTransient<SeedPostedAnswers>();
             services.AddTransient<SeedFeedEntries>();
+			services.AddTransient<SampleDataSeeder>();
 
-	        var builder = new ContainerBuilder();
+			var builder = new ContainerBuilder();
 			builder.Populate(services);
 
 	        Startup.ServiceLocator = builder.Build();
