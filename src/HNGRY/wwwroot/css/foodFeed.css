@@ -20,6 +20,17 @@
     width:100%;
 }
 
+.feed-post-inactive {
+    display: inline-table;
+    vertical-align: middle;
+    box-sizing: border-box;
+    border:2px solid #808080;
+    border-radius:5px;
+    margin-bottom:10px;
+    width:100%;
+    background-color: lightgray
+}
+
 .post-status {
     padding:0px 10px 0px;
     display: table-cell;
@@ -90,5 +101,13 @@
 }
 
 .post-undelete-button {
+    margin-top:20px;
     width:100%;
+    margin-bottom:20px;
+}
+
+.feed-submission {
+    margin-top:20px;
+    width:100%;
+    margin-bottom:20px;
 }

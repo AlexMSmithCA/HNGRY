@@ -1,0 +1,25 @@
+﻿@using HNGRY.ViewModels
+@{
+	var _model = (PostedAnswersViewModel) this.Model;
+}
+
+
+<div>
+	<h1>Responses from Bonnie and Dale</h1>
+	@foreach (var answer in _model.Answers)
+	{
+
+		<div class="panel panel-default">
+			<div class="panel-heading">Heading</div>
+			<div class="panel-body">
+				@answer.AuthorName (@answer.DateSubmittedDisplayString) @answer.Message
+			</div>
+		</div>
+	}
+	<nav>
+		<ul class="pager">
+			<li><a href="#">Previous</a></li>
+			<li><a href="#">Next</a></li>
+		</ul>
+	</nav>
+</div>

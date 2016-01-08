@@ -13,7 +13,5 @@
 		public string Message { get; set; }
 
 		public DateTime DateSubmitted { get; set; }
-
-		public QuestionSubmission Question { get; set; }
     }
 }

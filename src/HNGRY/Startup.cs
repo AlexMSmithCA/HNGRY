@@ -1,4 +1,7 @@
-﻿namespace HNGRY
+﻿using System.Threading.Tasks;
+using HNGRY.SampleSeeder;
+
+namespace HNGRY
 {
 	using System;
 	using Autofac;
@@ -49,6 +52,10 @@
             services.AddTransient<ISmsSender, AuthMessageSender>();
 	        services.AddScoped<IAppDbRepository, AppDbRepository>();
 
+			// Data seeding services
+	        services.AddTransient<SeedPostedAnswers>();
+	        services.AddTransient<SampleDataSeeder>();
+
 	        var builder = new ContainerBuilder();
 	        builder.Populate(services);
 
@@ -57,7 +64,7 @@
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+        public async void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory, SampleDataSeeder sampleDataSeeder)
         {
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
@@ -79,7 +86,8 @@
                         .CreateScope())
                     {
                         serviceScope.ServiceProvider.GetService<AppDbContext>()
-                             .Database.Migrate();
+                             .Database
+							 .EnsureCreated();
                     }
                 }
                 catch { }
@@ -98,6 +106,8 @@
                     template: "{controller}/{action}",
 					defaults: new { controller = "Navigation", action = "Index" });
             });
+
+	        await sampleDataSeeder.InitializeSeedData();
         }
 
         // Entry point for the application.
