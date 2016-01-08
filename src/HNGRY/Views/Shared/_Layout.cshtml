@@ -5,16 +5,17 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>@ViewData["Title"] HNGRY</title>
 
-        <environment names="Development">
-            <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
-        </environment>
+	    <environment names="Development">
+			<link rel="stylesheet" href="~/css/app.css" />
+		    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css"/>
+	    </environment>
 	    <environment names="Staging,Production">
+			<link rel="stylesheet" href="~/css/app.css" />
 		    <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.5/css/bootstrap.min.css"
 		          asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
 		          asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute"/>
 	    </environment>
-		<link rel="stylesheet" href="~/lib/bootswatch-dist/css/bootstrap.css" />
-
+	    <link rel="stylesheet" href="~/lib/bootswatch-dist/css/bootstrap.css"/>
 
 	    @RenderSection("styles", required: false)
     </head>
@@ -33,12 +34,27 @@
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
                         <li><a asp-controller="Navigation" asp-action="About">About</a></li>
-                        <li><a asp-controller="Navigation" asp-action="Subscribe">Subscribe</a></li>
-                        <li><a asp-controller="Navigation" asp-action="ResponseForm">Response Form</a></li>
                     </ul>
-					<ul class="nav navbar-nav navbar-right">
-						<li><a asp-controller="Navigation" asp-action="Subscribe">@User.Identity.Name</a></li>
-					</ul>
+	                <ul class="nav navbar-nav navbar-right">
+		                <li>
+			                <a href="#" data-toggle="dropdown" id="dropdownMenu2" aria-haspopup="true" aria-expanded="true">
+				                @User.Identity.Name
+								<span class="caret"></span>
+			                </a>
+			                <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+				                <li><a a asp-controller="Navigation" asp-action="Subscribe">Subscribe</a></li>
+				                @* TODO: Do not hard-code this in the future*@
+								@if (this.User.Identity.Name == @"APT\SWalsh")
+								{
+									<li><a asp-controller="Navigation" asp-action="ResponseForm">Response Form</a></li>
+								}
+								else
+								{
+									<li class="disabled"><a href="#">Response Form</a></li>
+								}
+			                </ul>
+		                </li>
+	                </ul>
                 </div>
             </div>
         </div>

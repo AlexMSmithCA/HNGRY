@@ -69,5 +69,8 @@ hidden {
     border-color:#5F5F5F;
 }
 
+.disabled > a {
+	color: #AAAAAA !important;
+}
 
 
