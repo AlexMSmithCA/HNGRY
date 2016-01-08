@@ -55,31 +55,24 @@
 
         public async Task AddFoodSubmission(string locationA, string messageA)
         {
-            //System.Net.Mail.MailMessage mail = new System.Net.Mail.MailMessage("", "kht.ngo@gmail.com", "subject","body");
+            System.Net.Mail.MailMessage mail = new System.Net.Mail.MailMessage("hngrymn@gmail.com","bstankey@predictiveTechnologies.com","food arrive","10th");
+            SmtpClient smtp = new SmtpClient();
+            smtp.Host = "smtp.gmail.com";
+            smtp.Port = 587;
+            smtp.EnableSsl = true;
+            smtp.DeliveryMethod = SmtpDeliveryMethod.Network; // [2] Added this
+            smtp.UseDefaultCredentials = false; // [3] Changed this
+            smtp.Credentials = new NetworkCredential("hngrymn@gmail.com", "APT12345");  // [4] Added this. Note, first parameter is NOT string.
 
-            ////System.Web.Mail.SmtpMail.SmtpServer = "SMTP Server Address";
-            ////System.Web.Mail.SmtpMail.Send(message);
-            //client.Host = "smtp.gmail.com";
-            //client.Port = 587;
-            //client.EnableSSL = true;
-            //client.Credentials = new NetworkCredential("yourname@gmail.com", "password");
-            ////MailMessage mail = new MailMessage();
-            ////mail.From = new System.Net.Mail.MailAddress("kht.ngo@gmail.com");
+            //recipient address
+            //mail.To.Add(new MailAddress("bstankey@att.net"));
 
-            //// The important part -- configuring the SMTP client
-            //SmtpClient smtp = new SmtpClient();
-            //smtp.DeliveryMethod = SmtpDeliveryMethod.PickupDirectoryFromIis;
+            //Formatted mail body
+            //mail.IsBodyHtml = true;
+            //string st = "Test";
 
-
-            ////recipient address
-            ////mail.To.Add(new MailAddress("bstankey@att.net"));
-
-            ////Formatted mail body
-            ////mail.IsBodyHtml = true;
-            ////string st = "Test";
-
-            ////mail.Body = st;
-            //smtp.Send(mail);
+            //mail.Body = st;
+            smtp.Send(mail);
 
             this._appContext.Add(new FeedEntry
             {
