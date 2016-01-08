@@ -31,7 +31,8 @@
         [HttpPost]
         public async Task<IActionResult> SubmitFood(FoodSubmissionAjaxViewModel model)
         {
-            await this._appRepository.AddFoodSubmission(model.Location, model.Message);
+			var userUUID = this._appRepository.GetUserFromName(this.User.Identity.Name).Id;
+			await this._appRepository.AddFoodSubmission(userUUID, model.Location, model.Message);
 
             return new JsonResult(new { Message = "Food submitted!" });
         }
@@ -39,7 +40,16 @@
         [HttpPost]
         public async Task<IActionResult> Subscribe(SubscribeAjaxViewModel model)
         {
-            await this._appRepository.AddSubscriber(model.Phone, model.FoodSubmissions, model.Email, model.PostsFrom, model.EmailAlert, model.TextAlert);
+	        var userUUID = this._appRepository.GetUserFromName(this.User.Identity.Name).Id;
+            await this._appRepository.AddSubscriber(
+				userUUID,
+				model.Name,
+				model.Email,
+				model.Phone,
+				model.EmailAlert,
+				model.TextAlert,
+				model.FoodSubmissions,
+				model.PostsFrom);
 
             return new JsonResult(new { Message = "Subscription Updated" });
         }
@@ -54,7 +64,8 @@
         [HttpPost]
         public async Task<IActionResult> SubmitResponse(SubmitResponseAjaxViewModel model)
         {
-            await this._appRepository.AddPostedAnswer(model.Title, model.Author, model.Message);
+			var userUUID = this._appRepository.GetUserFromName(this.User.Identity.Name).Id;
+			await this._appRepository.AddPostedAnswer(userUUID, model.Title, model.Author, model.Message);
 
             return new JsonResult(new { Message = "Feed Entry Updated" });
         }

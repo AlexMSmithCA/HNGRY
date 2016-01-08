@@ -1,4 +1,6 @@
-﻿namespace HNGRY.Controllers
+﻿using HNGRY.Models;
+
+namespace HNGRY.Controllers
 {
     using HNGRY.Services;
 	using Microsoft.AspNet.Authorization;
@@ -76,7 +78,13 @@
         {
             ViewData["Message"] = "Subscribe to Go/Food";
 
-            return View();
+	        var user = this._appRepository.GetUserFromName(this.User.Identity.Name);
+	        var subscription = this._appRepository.GetSubscriptionForUser(user.Id) ?? new Subscription();
+
+			ViewData["User"] = user;
+			ViewData["Subscription"] = subscription;
+
+			return View();
         }
         public IActionResult ResponseForm()
         {

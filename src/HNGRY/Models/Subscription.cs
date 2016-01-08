@@ -1,25 +1,20 @@
 ﻿namespace HNGRY.Models
 {
-    using System;
     using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
 
     public class Subscription
     {
-        [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Key]
+		public int SubscriptionId { get; set; }
 
-        public int AccountID { get; set; }
+        public string UserUUID { get; set; }
 
-        public string Email { get; set; }
+		public bool EmailAlert { get; set; }
 
-        public string Phone { get; set; }
+		public bool TextAlert { get; set; }
 
-        public int FoodSubmissions { get; set; }
+		public bool FoodSubmissions { get; set; }
 
-        public int PostsFrom { get; set; }
-
-        public int EmailAlert { get; set; }
-
-        public int TextAlert { get; set; }
+        public bool PostsFrom { get; set; }
     }
 }

@@ -2,16 +2,18 @@
 {
     public class SubscribeAjaxViewModel
     {
+		public string Name { get; set; }
+
         public string Email { get; set; }
 
         public string Phone { get; set; }
 
-        public int FoodSubmissions { get; set; }
+		public bool EmailAlert { get; set; }
 
-        public int PostsFrom { get; set; }
+		public bool TextAlert { get; set; }
 
-        public int EmailAlert { get; set; }
+		public bool FoodSubmissions { get; set; }
 
-        public int TextAlert { get; set; }
+        public bool PostsFrom { get; set; }
     }
 }

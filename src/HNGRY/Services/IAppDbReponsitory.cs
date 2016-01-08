@@ -13,15 +13,17 @@
 	    Task AddQuestionSubmission(string question);
 
 		List<PostedAnswer> GetPostedAnswers();
-		Task AddPostedAnswer(string title, string authorName, string message);
+		Task AddPostedAnswer(string userUUID, string title, string authorName, string message);
 
         List<FeedEntry> GetFeedEntries();
         Task UpdateFeedEntry(int id, UpdateFeedEntryChangeType changeType);
 
-        Task AddFoodSubmission(string locationA, string messageA);
+        Task AddFoodSubmission(string userUUID, string location, string message);
 
-        Task AddSubscriber(string phone, int foodSubmissions, string email, int postsFrom, int emailAlert, int textAlert);
+		Task AddSubscriber(string userUUID, string name, string email, string phone, bool emailAlert, bool textAlert,
+			bool foodSubmissions, bool postsFrom);
+		Subscription GetSubscriptionForUser(string userUUID);
 
 
-    }
+	}
 }

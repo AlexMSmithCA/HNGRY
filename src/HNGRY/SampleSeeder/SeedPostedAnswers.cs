@@ -17,8 +17,8 @@
 		{
 			if (!this._appRepository.GetPostedAnswers().Any())
 			{
-				await this._appRepository.AddPostedAnswer("No Dunkaroos", "Dale Faux", "Seriously, no more Dunkaroos.  Those are so 1988.");
-				await this._appRepository.AddPostedAnswer("Really no dunkaroos","Bonnie Louis", "Bon voyage to all of Sean Walsh's requests for carrots since he has decided to bring his own.");
+				//await this._appRepository.AddPostedAnswer("No Dunkaroos", "Dale Faux", "Seriously, no more Dunkaroos.  Those are so 1988.");
+				//await this._appRepository.AddPostedAnswer("Really no dunkaroos","Bonnie Louis", "Bon voyage to all of Sean Walsh's requests for carrots since he has decided to bring his own.");
 			}
 		}
 	}

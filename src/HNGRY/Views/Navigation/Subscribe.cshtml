@@ -1,5 +1,8 @@
 ﻿@{
     ViewData["Title"] = "Subscribe";
+
+	var user = (User) ViewData["User"];
+	var subscription = (Subscription) ViewData["Subscription"];
 }
 <h2>@ViewData["Title"].</h2>
 <h3>@ViewData["Message"]</h3>
@@ -13,52 +16,61 @@
 }
 
 <div class="success-message alert alert-success alert-dismissible" role="alert">
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-    Your subscription settings have been updated!
+	<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	Your subscription settings have been updated!
 </div>
-    <div class="form-group row">
-        <label class="col-sm-2">Alert me via</label>
-        <div class="col-sm-10">
-            <div>
-                <div class="checkbox">
-                    <label>
-                        <input type="checkbox" id="emailCheckbox"> Email
-                    </label>
-                </div>
-                <div class="email-input">
-                    <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
-                </div>
-            </div>
-            <div>
-                <div class="checkbox">
-                    <label>
-                        <input type="checkbox" id="phoneCheckbox"> Text
-                    </label>
-                </div>
-                <div class="phone-input">
-                    <input type="tel" class="form-control" id="inputPhoneNumber3" placeholder="Phone number">
-                </div>
-            </div>
-        </div>
-    </div>
 
-    <div class="form-group row">
-        <label class="col-sm-2">Tell me about</label>
-        <div class="col-sm-10">
+<div class="form-group row">
+	<label class="col-sm-2">My name</label>
+	<div class="col-sm-10">
+		<div class="name-input">
+			<input type="text" class="form-control nameInput" placeholder="First + Last" value="@user.FullName">
+		</div>
+	</div>
+</div>
+<div class="form-group row">
+    <label class="col-sm-2">Alert me via</label>
+    <div class="col-sm-10">
+        <div>
             <div class="checkbox">
                 <label>
-                    <input type="checkbox" id="foodSubmissionCheckbox"> Food submissions
+                    <input type="checkbox" id="emailCheckbox" @(!string.IsNullOrEmpty(user.Email) ? "checked value='true'" : string.Empty)> Email
                 </label>
             </div>
+            <div class="email-input @(!string.IsNullOrEmpty(user.Email) ? string.Empty : "hidden")">
+                <input type="email" class="form-control emailInput" placeholder="Email" value="@user.Email">
+            </div>
+        </div>
+        <div>
             <div class="checkbox">
                 <label>
-                    <input type="checkbox"  id="postsFromCheckbox"> Posts from Bonnie and Dale
+                    <input type="checkbox" id="phoneCheckbox" @(!string.IsNullOrEmpty(user.PhoneNumber) ? "checked value='true'" : string.Empty)> Text
                 </label>
+            </div>
+            <div class="phone-input @(!string.IsNullOrEmpty(user.PhoneNumber) ? string.Empty : "hidden")">
+                <input type="tel" class="form-control phoneNumberInput" placeholder="Phone number" value="@user.PhoneNumber">
             </div>
         </div>
     </div>
-    <div class="form-group row">
-        <div class="col-sm-offset-2 col-sm-10">
-            <button class="subscribe-button btn btn-primary">Update subscription</button>
+</div>
+
+<div class="form-group row">
+    <label class="col-sm-2">Tell me about</label>
+    <div class="col-sm-10">
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" id="foodSubmissionCheckbox" @(subscription.FoodSubmissions ? "checked value='true'" : string.Empty)> Food submissions
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+                <input type="checkbox"  id="postsFromCheckbox" @(subscription.PostsFrom ? "checked value='true'" : string.Empty)> Posts from Bonnie and Dale
+            </label>
         </div>
     </div>
+</div>
+<div class="form-group row">
+    <div class="col-sm-offset-2 col-sm-10">
+        <button class="subscribe-button btn btn-primary">Update subscription</button>
+    </div>
+</div>

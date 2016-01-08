@@ -17,9 +17,9 @@
 		{
 			if (!this._appRepository.GetFeedEntries().Any())
 			{
-				await this._appRepository.AddFoodSubmission("10th Floor","Clam chowder");
-                await this._appRepository.AddFoodSubmission("11th Floor", "Tomato paste");
-                await this._appRepository.AddFoodSubmission("91th Floor", "Chopped Panda");
+				//await this._appRepository.AddFoodSubmission("10th Floor","Clam chowder");
+    //            await this._appRepository.AddFoodSubmission("11th Floor", "Tomato paste");
+    //            await this._appRepository.AddFoodSubmission("91th Floor", "Chopped Panda");
             }
 		}
 	}
