@@ -1,5 +1,5 @@
 ﻿$(document).ready(function() {
-	var
+	var 
 
 	initialize = function() {
 		// Put the initialization stuff here
