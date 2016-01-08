@@ -27,22 +27,6 @@
 					.ToList()
 	        };
 
-            //ViewData["PostedAnswers"] = new List<PostedAnswer>
-            //{
-            //    new PostedAnswer
-            //    {
-            //        AuthorName = "Dale",
-            //        Message = "No more dunkaroos",
-            //        Question = new QuestionSubmission {QuestionText = "WHY DONT WE HAVE DUNKAROOS?" }
-            //    },
-            //    new PostedAnswer
-            //    {
-            //        AuthorName = "Dale",
-            //        Message = "No more dunkaroos seriously",
-            //        Question = new QuestionSubmission {QuestionText = "Why don't we have those dunking snacks?" }
-            //    }
-            //};
-
             return View();
         }
 
