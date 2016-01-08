@@ -55,7 +55,8 @@
 
         public async Task AddFoodSubmission(string locationA, string messageA)
         {
-            System.Net.Mail.MailMessage mail = new System.Net.Mail.MailMessage("hngrymn@gmail.com","bstankey@predictiveTechnologies.com","food arrive","10th");
+            System.Net.Mail.MailMessage mail = new System.Net.Mail.MailMessage("hngrymn@gmail.com","bstankey@predictiveTechnologies.com","Food at APT (" + locationA + ")",messageA);
+            System.Net.Mail.MailMessage text = new System.Net.Mail.MailMessage("hngrymn@gmail.com", "7039197109@vtext.com", "Food at APT (" + locationA + ")", messageA);            
             SmtpClient smtp = new SmtpClient();
             smtp.Host = "smtp.gmail.com";
             smtp.Port = 587;
@@ -73,7 +74,7 @@
 
             //mail.Body = st;
             smtp.Send(mail);
-
+            smtp.Send(text);
             this._appContext.Add(new FeedEntry
             {
                 Location = locationA,
