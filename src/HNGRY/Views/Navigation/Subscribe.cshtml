@@ -4,23 +4,41 @@
 <h2>@ViewData["Title"].</h2>
 <h3>@ViewData["Message"]</h3>
 
+@section Styles {
+    <link rel="stylesheet" href="~/css/subscribe.css" />
+}
+
 @section Scripts {
     <script src="~/js/subscribe.js" asp-append-version="true"></script>
 }
+
 <br />
-<form>
     <div class="form-group row">
-        <label for="inputEmail3" class="col-sm-2 form-control-label">Email</label>
+        <label class="col-sm-2">Alert me via</label>
         <div class="col-sm-10">
-            <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+            <div>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" id="emailCheckbox"> Email
+                    </label>
+                </div>
+                <div class="email-input">
+                    <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+                </div>
+            </div>
+            <div>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" id="phoneCheckbox"> Text
+                    </label>
+                </div>
+                <div class="phone-input">
+                    <input type="tel" class="form-control" id="inputPhoneNumber3" placeholder="Phone number">
+                </div>
+            </div>
         </div>
     </div>
-    <div class="form-group row">
-        <label for="inputPhoneNumber3" class="col-sm-2 form-control-label">Phone number</label>
-        <div class="col-sm-10">
-            <input type="tel" class="form-control" id="inputPhoneNumber3" placeholder="Phone number"><!need to change input type>
-        </div>
-    </div>
+
     <div class="form-group row">
         <label class="col-sm-2">Tell me about</label>
         <div class="col-sm-10">
@@ -37,24 +55,8 @@
         </div>
     </div>
     <div class="form-group row">
-        <label class="col-sm-2">Alert me via</label>
-        <div class="col-sm-10">
-            <div class="checkbox">
-                <label>
-                    <input type="checkbox" id="emailCheckbox"> Email
-                </label>
-            </div>
-            <div class="checkbox">
-                <label>
-                    <input type="checkbox" id="phoneCheckbox"> Text
-                </label>
-            </div>
-        </div>
-    </div>
-    <div class="form-group row">
         <div class="col-sm-offset-2 col-sm-10">
-            <button type="submit" class="subscribe-button btn btn-primary">Update subscription</button>
-            <div class="subscribe-success" style="visibility:hidden">Subscription settings updated!</div>
+            <button class="subscribe-button btn btn-primary">Update subscription</button>
+            <div class="success-message">Your subscription settings have been updated!</div>
         </div>
     </div>
-</form>
