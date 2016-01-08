@@ -1,0 +1,32 @@
+﻿@{
+    ViewData["Title"] = "Question Response Form";
+}
+@section Styles {
+    <link rel="stylesheet" href="~/css/responseForm.css" />
+}
+
+@section Scripts {
+    <script src="~/js/responseForm.js" asp-append-version="true"></script>
+}
+
+<h2>@ViewData["Title"].</h2>
+<h3>@ViewData["Message"]</h3>
+
+<div class="submit-response-success alert alert-success alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    Your response has been recorded!
+</div>
+
+<div class="form-group">
+    <label for="response-title">Title:</label>
+    <input type="text" class="form-control" id="response-title">
+</div>
+<div class="form-group">
+    <label for="response-author">Author:</label>
+    <input type="text" class="form-control" id="response-author">
+</div>
+<div class="form-group">
+    <label for="response-message">Comment:</label>
+    <textarea class="form-control" rows="5" id="response-message"></textarea>
+</div>
+<button type="submit" class="submit-response btn btn-primary ">Submit response</button>

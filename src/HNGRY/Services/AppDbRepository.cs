@@ -37,11 +37,12 @@
 		    return this._appContext.PostedAnswers.ToList();
 	    }
 
-	    public async Task AddPostedAnswer(string authorName, string message)
+	    public async Task AddPostedAnswer(string title, string authorName, string message)
 	    {
 			this._appContext.Add(new PostedAnswer
 			{
-				AuthorName = authorName,
+                Title = title,
+                AuthorName = authorName,
 				Message = message,
 				DateSubmitted = DateTime.Now
 			});
@@ -120,6 +121,7 @@
             else if (changeType == UpdateFeedEntryChangeType.Runout)
             {
                 entry.Status = false;
+                entry.DateConfirmed = DateTime.Now;
             }
             await this._appContext.SaveChangesAsync();
         }

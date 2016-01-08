@@ -47,5 +47,13 @@
             return new JsonResult(new { Message = "Feed Entry Updated" });
         }
 
+        [HttpPost]
+        public async Task<IActionResult> SubmitResponse(SubmitResponseAjaxViewModel model)
+        {
+            await this._appRepository.AddPostedAnswer(model.Title, model.Author, model.Message);
+
+            return new JsonResult(new { Message = "Feed Entry Updated" });
+        }
+
     }
 }
