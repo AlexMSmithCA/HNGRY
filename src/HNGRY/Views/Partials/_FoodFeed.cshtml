@@ -10,7 +10,7 @@
             <label for="sel1" class="food-submit-label">Location: </label>
             <select class="submit-food-location" id="sel1">
                 <option>9th Floor</option>
-                <option>10th Floor</option>
+                <option selected="selected">10th Floor</option>
                 <option>11th Floor</option>
                 <option>Other</option>
             </select>
@@ -40,9 +40,9 @@
                 @feedEntry.Message
             </div>
         </div>
-        <div class="post-message post-confirmed">@(isAvailable ? "Confirmed:" : "Ran out: ") @feedEntry.TimeSinceConfirm minutes ago</div>
+        <div class="post-message post-confirmed">@(isAvailable ? "Last confirmed:" : "Ran out: ") @feedEntry.TimeSinceConfirm minutes ago</div>
         <div class="post-buttons">
-            <button type="button" data-feed-id="@feedEntry.Id" class="post-undelete-button btn btn-default @(isAvailable ? "hidden" : string.Empty)">Available again</button>
+            <button type="button" data-feed-id="@feedEntry.Id" class="post-undelete-button btn btn-primary @(isAvailable ? "hidden" : string.Empty)">Available again</button>
             <button type="button" data-feed-id="@feedEntry.Id" class="post-confirm-button btn btn-primary @(isAvailable ? string.Empty : "hidden")">Still available</button>
             <br />
             <button type="button" data-feed-id="@feedEntry.Id" class="post-unavailable-button btn btn-default @(isAvailable ? string.Empty : "hidden")">Ran out</button>

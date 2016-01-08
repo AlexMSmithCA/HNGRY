@@ -12,7 +12,10 @@
 
 .submit-food {
     float:right;
-    margin-right:5px;
+    margin-right:11px;
+    height:35px;
+    width:135px;
+
 }
 
 .food-submit-label {
@@ -39,8 +42,8 @@
     display: inline-table;
     vertical-align: middle;
     box-sizing: border-box;
-    border:1px solid #808080;
-    border-radius:5px;
+    border:1px solid #dddddd;
+    border-radius:4px;
     margin-bottom:10px;
     width:100%;
 }
@@ -56,10 +59,12 @@
     vertical-align: middle;
     width:130px;
     text-align:center;
+    
 }
 
     .post-status-available {
         background-color:#008cba;
+        color:#fff;
     }
     .post-status-unavailable {
         background-color:#808080;
@@ -77,7 +82,7 @@
 }
 
 .post-message {
-    width: 100%;
+    width: 70%
     display: table-cell;
     float: left;
     vertical-align: middle;
